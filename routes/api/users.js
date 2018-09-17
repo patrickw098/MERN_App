@@ -5,11 +5,12 @@ const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
 
+const User = require('../../models/User');
+
 // validator
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
-const User = require('../../models/User');
 
 router.get('/test', (req,res) => {
     res.json({ msg: "Users route is working"})
