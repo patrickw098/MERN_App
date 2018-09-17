@@ -6,14 +6,26 @@ const ImageSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "users"
     },
-    description: {
-        type: String,
-        required: true
+    business: {
+        type: Schema.Types.ObjectId,
+        ref: "businesses"
+    },
+    location: {
+        type: Schema.Types.ObjectId,
+        ref: "locations"
     },
     date: {
         type: Date,
         default: Date.now
-    }
+    },
+    url: {
+        type: String,
+        required: true
+    },
+    tag: [{
+        type: String,
+        required: true
+    }]
 })
 
-module.exports = Image = mongoose.model('images', ImageSchema)
+module.exports = Event = mongoose.model('images', ImageSchema);

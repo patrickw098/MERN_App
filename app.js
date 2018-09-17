@@ -7,6 +7,7 @@ const passport = require('passport');
 // Routes
 const users = require('./routes/api/users');
 const images = require('./routes/api/images');
+const locations = require('./routes/api/locations');
 
 mongoose
     .connect(db)
@@ -30,6 +31,7 @@ app.get('/', (req, res) => res.send("Hello World"));
 // Begin Routes
 app.use('/api/users', users);
 app.use('/api/images', images);
+app.use('/api/locations', locations); //just trying to see if i can save location
 app.get('*', function (req, res) {
     res.status(404).send("error 404");
 });
