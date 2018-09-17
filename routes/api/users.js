@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
-const User = require('../../models/User');
+const User = require('../../models/Users');
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys')
 
@@ -10,6 +10,7 @@ router.get('/test', (req,res) => {
 })
 
 router.post('/register', (req,res) => {
+    console.log('REQUEST!!!', req.body);
     User.findOne({ email: req.body.email }) 
     .then(user => {
         if ( user ) {
@@ -35,7 +36,7 @@ router.post('/register', (req,res) => {
 
                         jwt.sign(
                             payload,
-                            keys.secretOrkey,
+                            keys.secretOrKeys,
                             { expiresIn: 3600 },
                             (err, token ) => {
                             res.json({
