@@ -8,19 +8,23 @@ router.get('/test', (req, res) => {
 
 router.post('/new', (req, res) => {
 
-    console.log((req.body.coordinates)); 
+    Region.findOne({name: req.body.name})
+        .then((region) => {    
+            if(region){
+                return res.status(400).json({ name: 'location already exits'});
+            }else{
+                const region = new Region({
+                    name: req.body.name,
+                    coordinates: req.body.coordinates.split(',')
+                })
 
-    const region = new Region({
-        name: req.body.name,
-        coordinates: req.body.coordinates.split(',')
-    })
-
-    console.log(region);
-    region.save()
-        .then((loc) => {
-            res.json(loc)
-        });
-    
+                region.save()
+                    .then((loc) => {
+                        res.json(loc)
+                    });
+        }
+    }) 
+        .catch(err => console.log(err));   
 
 })
 

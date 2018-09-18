@@ -3,7 +3,6 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
-const User = require('../../models/User');
 const passport = require('passport');
 
 const User = require('../../models/User');
@@ -28,7 +27,7 @@ router.post('/register', (req,res) => {
     User.findOne({ email: req.body.email }) 
     .then(user => {
         if ( user ) {
-            return req.status(400).json({ email: "An account is already registered to this email address"});
+            return res.status(400).json({ email: "An account is already registered to this email address"});
         } else {
             const newUser = new User({
                 name: req.body.name,
