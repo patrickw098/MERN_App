@@ -1,22 +1,16 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const RegionSchema = new Schema({
-    name: {
-        type: String,
+const LocationSchema = new Schema({
+    type: {
+        type: String, // Don't do `{ location: { type: String } }`
+        enum: ['Point'], // 'location.type' must be 'Point'
         required: true
     },
     coordinates: {
-        type: [Number],
+        type: [Number], // GEO Json is formatted in long, lat
         required: true
     }
-    // location: {
-    //     type: {
-    //         type: String, 
-    //         required: true
-    //     },
-
-    // }
 })
 
-module.exports = Event = mongoose.model('regions', RegionSchema)
+module.exports = Event = mongoose.model('locations', LocationSchema)
