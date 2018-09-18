@@ -6,9 +6,9 @@ const BusinessSchema = new Schema({
         type: String,
         required: true
     },
-    location: {
+    region: {
         type: Schema.Types.ObjectId,
-        ref: 'locations'
+        ref: 'regions'
     }
 });
 

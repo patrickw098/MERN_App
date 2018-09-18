@@ -3,19 +3,20 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
+const User = require('../../models/User');
 const passport = require('passport');
 
 // validator
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
-const User = require('../../models/User');
 
 router.get('/test', (req,res) => {
     res.json({ msg: "Users route is working"})
 })
 
 router.post('/register', (req,res) => {
+    console.log(req.body);
     const { errors, isValid } = validateRegisterInput(req.body);
 
     if (!isValid) {
@@ -101,11 +102,13 @@ router.post("/login", (req, res) => {
     });
 });
 
-router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
+router.get('/current', 
+passport.authenticate('jwt', { session: false }), (req, res) => {
     res.json({
         id: req.user.id,
         name: req.user.name
     });
-})
+}
+)
 
 module.exports = router;
