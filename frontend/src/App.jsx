@@ -3,6 +3,8 @@ import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
 import './App.css';
 
+import Root from './components/root';
+
 class App extends Component {
   constructor({store}) {
     super();
@@ -14,7 +16,7 @@ class App extends Component {
       <div className="App">
         <Provider store={this.store}>
           <HashRouter>
-            <h1> Foodr App </h1>
+            <Root />
           </HashRouter>
         </Provider>
       </div>

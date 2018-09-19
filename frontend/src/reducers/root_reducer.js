@@ -3,8 +3,8 @@ import entitiesReducer from './entities_reducer';
 import uiReducer from './ui_reducer';
 import sessionReducer from './session_reducer';
 
-export default combineReducers ({
+export default combineReducers({
     entities: entitiesReducer,
+    session: sessionReducer,
     ui: uiReducer,
-    session: sessionReducer
 })
