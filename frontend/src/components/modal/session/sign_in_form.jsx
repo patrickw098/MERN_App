@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { loginUser, registerUser } from '../../../utils/session_api_utils';
+
 class SignInForm extends React.Component {
     constructor(props) {
         super(props);
@@ -31,6 +33,14 @@ class SignInForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+
+        const { loginUser, registerUser, action } = this.props;
+
+        if ( action === 'Sign Up' ) {
+            registerUser(this.state);
+        } else {
+            loginUser(this.state);
+        }
     }
 
     render() {
@@ -58,7 +68,7 @@ class SignInForm extends React.Component {
         return (
             <div className='sign-in-form'>
                 { greeting } 
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <label><div>Email</div>
                         <input id="form-input-id" type="text" onChange={this.handleChange('email')} value={this.state.email}></input>
                     </label>
@@ -79,7 +89,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-
+    loginUser: (user) => dispatch(loginUser(user)),
+    registerUser: (user) => dispatch(registerUser(user)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignInForm);
