@@ -4,8 +4,6 @@ const Util = require('./util');
 module.exports = function validateRegisterInput(data) {
     let errors = {};
 
-    console.log(Util.isEmpty({}));
-
     data.name = !Util.isEmpty(data.name) ? data.name : '';
     data.email = !Util.isEmpty(data.email) ? data.email : '';
     data.password = !Util.isEmpty(data.password) ? data.password : '';
@@ -43,8 +41,6 @@ module.exports = function validateRegisterInput(data) {
         errors.password2 = 'Passwords must match';
     }
 
-    console.log('errors', errors);
-    // console.log('valid?', Util.isEmpty(errors));
     return {
         errors,
         isValid: Util.isEmpty(errors)
