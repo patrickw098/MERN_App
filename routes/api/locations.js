@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Location = require('../../models/Locations');
+const Location = require('../../models/Location');
 
 router.get('/test', (req, res) => {
     res.json({ msg: "Locations route is working" })
