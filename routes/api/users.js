@@ -17,6 +17,7 @@ router.get('/test', (req,res) => {
 })
 
 router.post('/register', (req,res) => {
+
     const { errors, isValid } = validateRegisterInput(req.body);
 
     if (!isValid) {
@@ -102,11 +103,13 @@ router.post("/login", (req, res) => {
     });
 });
 
-router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
+router.get('/current', 
+passport.authenticate('jwt', { session: false }), (req, res) => {
     res.json({
         id: req.user.id,
         name: req.user.name
     });
-})
+}
+)
 
 module.exports = router;

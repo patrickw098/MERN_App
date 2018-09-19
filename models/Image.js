@@ -10,9 +10,9 @@ const ImageSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "businesses"
     },
-    location: {
+    region: {
         type: Schema.Types.ObjectId,
-        ref: "locations"
+        ref: "regions"
     },
     date: {
         type: Date,
