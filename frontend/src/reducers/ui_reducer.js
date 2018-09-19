@@ -11,7 +11,7 @@ const uiReducer = (state = defaultState, action) => {
         case REGISTER:
             return Object.assign({}, state, { modal: action.text })
         case CLOSE_MODAL:
-            return Object.assign({}, state, { modal: null })
+            return Object.assign({}, state, { modal: null, errors: null })
         case RECEIVE_ERRORS:
             return Object.assign({}, state, { errors: action.errors })
         default: 

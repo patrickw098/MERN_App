@@ -10,7 +10,7 @@ const Root = () => (
         <Modal />
         <header className="greeting-header">
             <Link to="/" className="header-link">
-                <h1>NomWheels</h1>
+                NomWheels
             </Link>
             <Greeting />
         </header>
