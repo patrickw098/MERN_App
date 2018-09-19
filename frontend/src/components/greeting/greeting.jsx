@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { register } from '../../actions/modal_actions';
 import { logoutUser } from '../../actions/user_actions';
 
+import './greeting.css';
+
 class Greeting extends React.Component {
     handleClick(e, text) {
         e.preventDefault();
