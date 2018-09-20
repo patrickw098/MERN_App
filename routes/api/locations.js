@@ -1,11 +1,7 @@
 const express = require('express');
 const router = express.Router();
-<<<<<<< HEAD
-const Location = require('../../models/Location');
-=======
 const Region = require('../../models/Location');
 const validateLocation = require('../../validation/new_location');
->>>>>>> d9f80fa07d5de8617986808ae400a2191c9e968d
 
 router.get('/test', (req, res) => {
     res.json({ msg: "Locations route is working" })
