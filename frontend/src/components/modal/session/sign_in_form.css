@@ -1,0 +1,22 @@
+.asterisk {
+    color: red;
+}
+
+.sign-in-form {
+    width: 480px;
+    height: 300px;
+    background-color: white;
+    padding: 50px;
+}
+
+.submit-form {
+    margin: 50px;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sign-in-form button {
+    display: block;
+}

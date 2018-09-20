@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { loginUser, registerUser } from '../../../utils/session_api_utils';
 import '../../styles/sign_in.css';
 
+import './sign_in_form.css';
+
 class SignInForm extends React.Component {
     constructor(props) {
         super(props);
@@ -45,22 +47,37 @@ class SignInForm extends React.Component {
     }
 
     render() {
-        const type = this.props.action;
+        const { action, errors } = this.props;
         let greeting, name, passwordTwo;
+        let asteriskEmail = "  ", asteriskPassword = "  ", asteriskName = "  ";
 
-        if ( type === 'Sign Up' ) {
+
+        if ( errors ) {
+            if ( errors.name ) {
+                asteriskName = "*"
+            } 
+            if ( errors.password ) {
+                asteriskPassword = "*";
+            } 
+            if ( errors.email ) {
+                asteriskEmail = "*"
+            }
+        }
+
+
+        if (type === 'Sign Up') {
             greeting = <div className="sign-up-welcome">
-            <p>Welcome to NomWheels!</p>
-            <p>Please create an account!</p>
+                <p>Welcome to NomWheels!</p>
+                <p>Please create an account!</p>
             </div>
             name = 
                     ( <label>
-                        <div>Name</div>
+                        <div>Name<span className="asterisk">{asteriskName}</span></div>
                         <input type="text" onChange={this.handleChange('name')} value={this.state.name}></input>
                     </label> )
             passwordTwo = 
                     ( <label>
-                        <div>Confirm Password</div>
+                        <div>Confirm Password<span className="asterisk">{asteriskPassword}</span></div>
                         <input type="password" onChange={this.handleChange('password2')} value={this.state.password2}></input>
                     </label> )
         } else {
@@ -74,17 +91,17 @@ class SignInForm extends React.Component {
 
         return (
             <div className='sign-in-form'>
-                { greeting } 
-                <form onSubmit={this.handleSubmit}>
-                    <label><div>Email</div>
+                <h1 className='sign-in-greeting'>{greeting}</h1>
+                <form className='submit-form' onSubmit={this.handleSubmit}>
+                    <label><div>Email<span className="asterisk">{asteriskEmail}</span></div>
                         <input id="form-input-id" type="text" onChange={this.handleChange('email')} value={this.state.email}></input>
                     </label>
                     { name } 
-                    <label><div>Password</div>
+                    <label><div>Password<span className="asterisk">{asteriskPassword}</span></div>
                         <input type="password" onChange={this.handleChange('password')} value={this.state.password}></input>
                     </label>
                     { passwordTwo }
-                    <button className='sign-in-button' onClick={this.handleSubmit}>{type}</button>
+                    <button className='sign-in-button' onClick={this.handleSubmit}>{action}</button>
                 </form>
             </div>
         )
@@ -92,7 +109,8 @@ class SignInForm extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    action: state.ui.modal
+    action: state.ui.modal,
+    errors: state.ui.errors,
 })
 
 const mapDispatchToProps = dispatch => ({
