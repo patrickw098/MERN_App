@@ -49,7 +49,10 @@ class SignInForm extends React.Component {
         let greeting, name, passwordTwo;
 
         if ( type === 'Sign Up' ) {
-            greeting = <div className="sign-up-welcome">Welcome to NomWheels! Please create an account!</div>
+            greeting = <div className="sign-up-welcome">
+            <p>Welcome to NomWheels!</p>
+            <p>Please create an account!</p>
+            </div>
             name = 
                     ( <label>
                         <div>Name</div>
@@ -61,7 +64,10 @@ class SignInForm extends React.Component {
                         <input type="password" onChange={this.handleChange('password2')} value={this.state.password2}></input>
                     </label> )
         } else {
-            greeting = <div className="sign-up-welcome">Welcome Back! Please sign in.</div>
+            greeting = <div className="sign-up-welcome">
+            <p> Welcome Back!</p> 
+            <p>Please sign in.</p>
+            </div>
             name = null;
             passwordTwo = null;
         }
