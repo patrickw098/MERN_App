@@ -1,18 +1,14 @@
-.greeting-header {
-    height: 50px;
-    padding: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: red;
-    border: 2px solid white;
-}
-
 .greeting-div {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
+
+/* .greeting-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+} */
 
 a {
     color: white;

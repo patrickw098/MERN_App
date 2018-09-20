@@ -4,6 +4,8 @@ import { AuthRoute, ProtectedRoute } from '../utils/route_utils';
 
 import Greeting from './greeting/greeting';
 import Modal from './modal/modal';
+import Footer from './greeting/footer';
+import Body from './body';
 
 const Root = () => (
     <div className="app-root">
@@ -14,6 +16,8 @@ const Root = () => (
             </Link>
             <Greeting />
         </header>
+        <Body />
+        <Footer />
     </div>
 )
 

@@ -16,14 +16,12 @@ class Greeting extends React.Component {
     
     handleLogout(e) {
         e.preventDefault();
-        console.log("loggingout");
         this.props.logoutUser();
     }
 
 
     render() {
         const { currentUser } = this.props;
-        console.log(currentUser);
 
         return (
             <div className="greeting-div">
