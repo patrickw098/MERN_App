@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { loginUser, registerUser } from '../../../utils/session_api_utils';
+import '../../styles/sign_in.css';
 
 import './sign_in_form.css';
 
@@ -63,8 +64,12 @@ class SignInForm extends React.Component {
             }
         }
 
-        if ( action === 'Sign Up' ) {
-            greeting = <div className="sign-up-welcome">Welcome to NomWheels! Please create an account!</div>
+
+        if (type === 'Sign Up') {
+            greeting = <div className="sign-up-welcome">
+                <p>Welcome to NomWheels!</p>
+                <p>Please create an account!</p>
+            </div>
             name = 
                     ( <label>
                         <div>Name<span className="asterisk">{asteriskName}</span></div>
@@ -72,11 +77,14 @@ class SignInForm extends React.Component {
                     </label> )
             passwordTwo = 
                     ( <label>
-                        <div>Retype Password<span className="asterisk">{asteriskPassword}</span></div>
+                        <div>Confirm Password<span className="asterisk">{asteriskPassword}</span></div>
                         <input type="password" onChange={this.handleChange('password2')} value={this.state.password2}></input>
                     </label> )
         } else {
-            greeting = <div className="sign-up-welcome">Welcome Back! Please sign in.</div>
+            greeting = <div className="sign-up-welcome">
+            <p> Welcome Back!</p> 
+            <p>Please sign in.</p>
+            </div>
             name = null;
             passwordTwo = null;
         }
@@ -93,7 +101,7 @@ class SignInForm extends React.Component {
                         <input type="password" onChange={this.handleChange('password')} value={this.state.password}></input>
                     </label>
                     { passwordTwo }
-                    <button onClick={this.handleSubmit}>{action}</button>
+                    <button className='sign-in-button' onClick={this.handleSubmit}>{action}</button>
                 </form>
             </div>
         )
