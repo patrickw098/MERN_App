@@ -5,7 +5,7 @@ import { closeModal } from '../../actions/modal_actions';
 
 import SignUpForm from './session/sign_in_form';
 
-import './modal.css';
+import '../styles/modal.css';
 
 class Modal extends React.Component {
     render() {
