@@ -1,8 +1,8 @@
 import { RECEIVE_IMAGES, RECEIVE_QUERY } from '../../actions/image_actions';
 
-const defaultState = [1,2,3,4,5,6]
+import { imageDefaults } from '../../config/vars';
 
-const imageReducer = (state = defaultState, action) => {
+const imageReducer = (state = imageDefaults, action) => {
     Object.freeze(state);
     switch (action.type) {
         case RECEIVE_QUERY:
