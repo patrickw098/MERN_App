@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { loginUser, registerUser } from '../../../utils/session_api_utils';
+import '../../styles/sign_in.css';
 
 class SignInForm extends React.Component {
     constructor(props) {
@@ -56,7 +57,7 @@ class SignInForm extends React.Component {
                     </label> )
             passwordTwo = 
                     ( <label>
-                        <div>Retype Password</div>
+                        <div>Confirm Password</div>
                         <input type="password" onChange={this.handleChange('password2')} value={this.state.password2}></input>
                     </label> )
         } else {
@@ -77,7 +78,7 @@ class SignInForm extends React.Component {
                         <input type="password" onChange={this.handleChange('password')} value={this.state.password}></input>
                     </label>
                     { passwordTwo }
-                    <button onClick={this.handleSubmit}>{type}</button>
+                    <button className='sign-in-button' onClick={this.handleSubmit}>{type}</button>
                 </form>
             </div>
         )
