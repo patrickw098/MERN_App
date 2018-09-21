@@ -34,7 +34,7 @@ class Greeting extends React.Component {
                     <div className="greeting-buttons">
                         <button onClick={(e) => this.handleClick(e, "Log In")}>Log In</button>
                         <button onClick={(e) => this.handleClick(e, "Sign Up")}>Sign Up</button>
-                        {/* <Dropdown/> */}
+                        <Dropdown/>
                     </div>
                 ) : (
                     <div className="greeting-buttons">

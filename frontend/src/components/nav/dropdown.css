@@ -13,16 +13,18 @@
     position: absolute;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     list-style: none;
     border: 1px solid yellow;
     padding: 13px;
     margin: 5px;
     width: 100px;
+    height: 100px;
     transform: translate(-100%,0);
     left: 0;
     top: 70%;
     z-index: 2;
-    background: antiquewhite;
+    background: white;
 }
 
 .hide-drop {
@@ -31,7 +33,15 @@
 }
 
 li {
-    padding: 5px;
+    /* padding: 5px; */
+
+    border: 1px solid black;
+    width: 100%;
+}
+
+li:hover{
+    cursor: pointer;
+    background: antiquewhite;
 }
 
 a {
