@@ -17,15 +17,36 @@ class Dropdown extends React.Component {
         }
 
         this.handleLogout = this.handleLogout.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+        this.cancelDropdown = this.cancelDropdown.bind(this);
+        this.cancelTimeout = this.cancelDropdown.bind(this);
     }
 
-    handleChange(type) {
+    handleClick(type) {
+        clearTimeout(this.timeout);
+
         return (e) => {
+            e.preventDefault();
+
             this.setState({
                 [type]: !this.state[type]
             }, () => console.log(this.state));
         };
+    }
+
+    cancelTimeout(e) {
+        e.preventDefault();
+
+        clearTimeout(this.timeout);
+    }
+
+    cancelDropdown(e) {
+        e.preventDefault();
+        clearTimeout(this.timeout);
+
+        this.timeout = setTimeout(() => this.setState({
+            active: false
+        }), 100);
     }
 
     handleLogout(e) {
@@ -38,8 +59,8 @@ class Dropdown extends React.Component {
         const active = this.state.active ?  '' : 'hide-drop';
 
         return(
-            <div className='dropdown'>
-                <i className="fas fa-bars" onClick= {this.handleChange('active')}></i>
+            <div className='dropdown' onMouseLeave={this.cancelDropdown} onMouseEnter={this.cancelTimeout}>
+                <i className="fas fa-bars" onClick={this.handleClick('active')}></i>
                 <ul className = {`dropdown-list ${active}`}>
                     <li><Link to="/about" style={{ color: 'black' }}>Profile</Link></li>
                     <li><Link to="/about" style={{ color: 'black' }}>Photos</Link></li>

@@ -1,11 +1,18 @@
 .dropdown {
     position: relative;
-    padding: 10px;
+    cursor: pointer;
+    align-items: center;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 35px;
+    width: 35x;
 }
 
 .fa-bars{
-    transform: translateY(30%);
-    font-size: x-large;
+    /* transform: translateY(30%); */
+    font-size: 30px;
     color: white;
 }
 
@@ -21,7 +28,7 @@
     width: 100px;
     height: 100px;
     transform: translate(-100%,0);
-    left: 0;
+    left: 20px;
     top: 70%;
     z-index: 2;
     background: white;
@@ -37,6 +44,7 @@ li {
 
     border: 1px solid black;
     width: 100%;
+    cursor: pointer;
 }
 
 li:hover{
