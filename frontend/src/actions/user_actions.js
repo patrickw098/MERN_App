@@ -17,7 +17,6 @@ export const receiveErrors = errors => ({
 })
 
 export const logoutUser = () => dispatch => {
-    console.log("in this function");
     // Remove token from localStorage
     localStorage.removeItem('jwtToken');
 

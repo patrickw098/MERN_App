@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { loginUser, registerUser } from '../../../utils/session_api_utils';
-import '../../styles/sign_in.css';
+import './sign_in.css';
 
 // import './sign_in_form.css';
 
