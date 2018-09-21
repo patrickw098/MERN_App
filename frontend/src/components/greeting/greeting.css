@@ -4,11 +4,11 @@
     justify-content: center;
 }
 
-/* .greeting-buttons {
+.greeting-buttons{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-} */
+}
 
 a {
     color: white;
