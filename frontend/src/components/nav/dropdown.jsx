@@ -19,7 +19,7 @@ class Dropdown extends React.Component {
         this.handleLogout = this.handleLogout.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.cancelDropdown = this.cancelDropdown.bind(this);
-        this.cancelTimeout = this.cancelDropdown.bind(this);
+        this.cancelTimeout = this.cancelTimeout.bind(this);
     }
 
     handleClick(type) {
@@ -46,12 +46,11 @@ class Dropdown extends React.Component {
 
         this.timeout = setTimeout(() => this.setState({
             active: false
-        }), 100);
+        }), 300);
     }
 
     handleLogout(e) {
         e.preventDefault();
-        console.log("loggingout");
         this.props.logoutUser();
     }
 
