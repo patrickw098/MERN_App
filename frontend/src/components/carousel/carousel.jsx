@@ -54,9 +54,9 @@ class Carousel extends React.Component {
 
     nextPhoto(e){
         e.preventDefault();
-        if(this.state.currentIdx < this.state.images.length - 3){
+        if(this.state.currentIdx < this.state.images.length - 1){
             this.setState({
-                currentIdx: this.state.currentIdx + 3,
+                currentIdx: this.state.currentIdx + 1,
                 currentImages: this.rotateImages(1)
             }, () => {
                 console.log(this.state);
@@ -70,9 +70,9 @@ class Carousel extends React.Component {
 
     prevPhoto(e){
         e.preventDefault();
-        if (this.state.currentIdx > 2) {
+        if (this.state.currentIdx > 0) {
             this.setState({
-                currentIdx: this.state.currentIdx - 3,
+                currentIdx: this.state.currentIdx - 1,
                 currentImages: this.rotateImages(-1)
             }, () => {
                 console.log(this.state);
