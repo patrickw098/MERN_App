@@ -13,7 +13,7 @@ class Carousel extends React.Component {
         this.state = {
             images: imageDefaults,
             currentIdx: 0,
-            currentImages:[0, 1, 2] 
+            currentImages: [0,1,2]
         }
     }
 
@@ -44,16 +44,16 @@ class Carousel extends React.Component {
     }
 
     render(){
-        
+        const {images} = this.state;
         return (
             <div className='carousel'>
-                <button className='left-button'></button>
+                <button className='button left-button'></button>
                 <div className="carousel-wrapper">
-                    {this.state.images.map(photo => {
-                        return <Photo key={photo.id} url={photo.url} />
+                    {this.state.currentImages.map(index => {
+                        return <Photo key={images[index].id} url={images[index].url} />
                     })}
                 </div>
-                <button className='right-button'></button>
+                <button className='buttright-button'></button>
             </div>
         )
 
