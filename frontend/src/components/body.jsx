@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import SearchBox from './search/search_box';
+import Carousel from './carousel/carousel';
 
 class Body extends React.Component {
     
@@ -15,6 +16,7 @@ class Body extends React.Component {
                 ) : ( null ) }
                 <div className="carousel-div">
                     Some Carousel
+                    <Carousel />
                 </div>
             </main>
         )
