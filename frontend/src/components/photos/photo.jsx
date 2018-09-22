@@ -1,8 +1,10 @@
 import React from 'react';
 
+import './photo.css';
+
 //should be a stateless component that just houses the image
 //props should just be the photo, business info obj, and method to to go business page on click
-export const Photo = (props) => {
+const Photo = (props) => {
     const {url, business, visitBusiness} = props;
     
     return (
@@ -12,3 +14,4 @@ export const Photo = (props) => {
         </div>
     )
 }
+export default Photo;
