@@ -31,8 +31,8 @@ class Greeting extends React.Component {
                 { !currentUser.id ? 
                 (
                     <div className="greeting-buttons">
-                        <button onClick={(e) => this.handleClick(e, "Log In")}>Log In</button>
-                        <button onClick={(e) => this.handleClick(e, "Sign Up")}>Sign Up</button>
+                        <div className="greeting-buttons-button" onClick={(e) => this.handleClick(e, "Log In")}>Log In</div>
+                            <div className="greeting-buttons-button" onClick={(e) => this.handleClick(e, "Sign Up")}>Sign Up</div>
                     </div>
                 ) : (
                     <div className="dropdown-container">

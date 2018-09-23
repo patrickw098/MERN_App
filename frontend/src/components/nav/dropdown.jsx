@@ -61,8 +61,8 @@ class Dropdown extends React.Component {
             <div className='dropdown' onMouseLeave={this.cancelDropdown} onMouseEnter={this.cancelTimeout}>
                 <i className="fas fa-bars" onClick={this.handleClick('active')}></i>
                 <ul className = {`dropdown-list ${active}`}>
-                    <li><Link to="/about" style={{ color: 'black' }}>Profile</Link></li>
-                    <li><Link to="/about" style={{ color: 'black' }}>Photos</Link></li>
+                    <li><Link to="/profile" style={{ color: 'black' }}>Profile</Link></li>
+                    <li><Link to="/photos" style={{ color: 'black' }}>Photos</Link></li>
                     <li onClick = {this.handleLogout}>Logout</li>
                 </ul>
             </div>

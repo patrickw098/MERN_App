@@ -7,15 +7,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding-top: 20px;
     /* background: #FB4D3D; */
     background: white;
-    border: 2px solid red;
+    /* border: 1px solid black; */
     border-radius: 5px;
     /* color: antiquewhite; */
 }
 
-.sign-up-welcome{
+.sign-up-welcome {
     font-size: 30px;
     width: 100%;
     display:flex;
@@ -24,7 +24,7 @@
     align-items: center;
 }
 
-p{
+p {
     margin: 2px;
     font-family: 'Shadows Into Light', cursive;
 }
@@ -45,10 +45,10 @@ input {
 }
 
 input:focus {
-    border:3px solid red;
+    border:3px solid darkred;
 }
 
-button{
+button {
     background: #EAC435;
     border-radius: 10px;
     width: 100px;
@@ -58,6 +58,26 @@ button{
     cursor: pointer;
 }
 
+.sign-in-button {
+    width: 100%;
+    background-color: red;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.sign-in-button:hover {
+    background-color: darkred;
+}
+
 button:hover {
     background: rgb(201, 158, 3);
+}
+
+.asterisk {
+    color: red;
 }
