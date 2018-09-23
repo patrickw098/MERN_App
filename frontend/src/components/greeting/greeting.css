@@ -4,12 +4,33 @@
     justify-content: center;
 }
 
-.greeting-buttons{
+.greeting-buttons {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 220px;
+    width: 175px;
+    height: 100%;
+}
+
+.greeting-buttons-button:first-child {
+    border-right: 2px solid whitesmoke;
+}
+
+.greeting-buttons-button {
+    background-color: red;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+}
+
+.greeting-buttons-button:hover {
+    background-color: darkred;
 }
 
 a {

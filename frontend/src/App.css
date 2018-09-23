@@ -20,7 +20,7 @@ header, h1 {
 .greeting-header {
     height: 80px;
     width: 100%;
-    padding: 10px;
+    padding: 5px 5px 5px 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
