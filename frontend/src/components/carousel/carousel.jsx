@@ -99,7 +99,7 @@ class Carousel extends React.Component {
     }
 
     detectKeyDown(e){
-        console.log(e.key);
+        // console.log(e.key);
         if (e.key === 'ArrowUp') {
         }
         else if (e.key === 'ArrowDown') {
@@ -113,7 +113,7 @@ class Carousel extends React.Component {
     }
 
     render(){
-        const {images, currentImages} = this.state;
+        const {images, currentImages, currentIdx} = this.state;
         // console.log('current',currentImages);
         return (
             <div className='carousel' tabIndex='0' onKeyDown = {this.detectKeyDown}>
@@ -122,7 +122,7 @@ class Carousel extends React.Component {
                     >Previous</button>
                 <div className="carousel-wrapper">
                     {currentImages.map(index => {
-                        return <Photo key={images[index].id} url={images[index].url} />
+                        return <Photo key={images[index].id} url={images[index].url} current = {index === currentIdx ? 'active-photo' : ''}/>
                     })}
                 </div>
                 <button className='button right-button' 

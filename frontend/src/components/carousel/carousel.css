@@ -4,6 +4,7 @@
     justify-content: space-between;
     overflow-x: hidden;
     flex: 1;
+    position: relative;
 }
 
 .carousel {
@@ -11,4 +12,5 @@
     flex-direction: row;
     justify-content: space-between;
     width: 100vw;
+    transition: 2s ease;
 }
