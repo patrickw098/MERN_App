@@ -2,11 +2,16 @@
     border: 5px solid red;
     margin-left: 10px;
     /* width: 300px; */
-    height: 70vh;
+    height: 70vh;  
+    opacity: .6;
 }
 
 .photo{
     /* object-fit: cover; */
     width: 100%;
     height: 80%;
+}
+
+.active-photo{
+    opacity: 1;
 }

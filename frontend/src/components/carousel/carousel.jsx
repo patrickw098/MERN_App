@@ -14,42 +14,60 @@ class Carousel extends React.Component {
             images: imageDefaults,
             currentIdx: 0,
             currentImages: [0, 1, 2],
-            prevImages: [0, 1, 2]
+            noImg: 'https://cdn.dribbble.com/users/55871/screenshots/2158022/no_photo_1x.jpg'
         }
 
         this.nextPhoto = this.nextPhoto.bind(this);
         this.prevPhoto = this.prevPhoto.bind(this);
+        this.detectKeyDown = this.detectKeyDown.bind(this);
+    }
+
+    componentWillMount(){
+        //this does not require user to focus on the carousel
+        // document.addEventListener('keydown', this.detectKeyDown);
+    }
+
+    componentWillUnmount(){
+        //this does not require user to focus on the carousel
+        // document.removeEventListener('keydown', this.detectKeyDown);
     }
 
     visitBusiness(){
-        //go to business's page
+        //go to business's page when photo gets selected
     }
 
     rotateImages(direction){
-        let { currentImages, images, prevImages, currentIdx } = this.state;
-        let newCurrent = currentImages.map((el) => el + direction);
+        let { currentImages, images, currentIdx, noImg } = this.state;
         const newIdx = currentIdx + direction;
-        
-        if (direction > 0 && newIdx < images.length - 3){
-            this.setState({
-                prevImages: currentImages
-            });
+        //if new Index is still in current images, return the currentImages
+        if(currentImages.includes(newIdx)) return currentImages;
+        //if forward direction, update by 3
+        let newImages;
+        if(direction > 0){
+            newImages = currentImages.map((el) => el + 3);
+        }else{
+            newImages = currentImages.map((el) => el - 3);
         }
 
-    
-        newCurrent = newCurrent.reduce((acc, el) => {
-            if (el < images.length && el > -1) {
-                acc.push(el);
+        //take care of the images if there are not a multiple of 3 
+        const len = images.length;
+        const copy = images.slice(0);
+        for(let i = 0; i < newImages.length; i++ ){
+            if(newImages[i] > len - 1){
+                copy.push({
+                    url: noImg,
+                    id: newImages[i]
+                })
             }
-            return acc;
-        }, []);
-    
-
-        if (direction < 0 && newIdx > images.length - 3){
-            newCurrent = prevImages;
         }
 
-        return newCurrent;
+        if(len !== copy.length){
+            this.setState({
+                images: copy
+            }, () => console.log(copy))
+        }
+
+        return newImages;
     }
 
     nextPhoto(e){
@@ -63,9 +81,9 @@ class Carousel extends React.Component {
             })
         }
 
-        if (this.state.currentIdx > 5){
-            //make api call to yelp to update the state of the images
-        }
+        // if (this.state.currentIdx > 5){
+        //     //make api call to yelp to update the state of the images
+        // }
     }
 
     prevPhoto(e){
@@ -80,18 +98,36 @@ class Carousel extends React.Component {
         }
     }
 
+    detectKeyDown(e){
+        // console.log(e.key);
+        if (e.key === 'ArrowUp') {
+        }
+        else if (e.key === 'ArrowDown') {
+        }
+        else if (e.key === 'ArrowRight') {
+            this.nextPhoto(e);
+        }
+        else if (e.key === 'ArrowLeft') {
+            this.prevPhoto(e);
+        }
+    }
+
     render(){
-        const {images, currentImages} = this.state;
-        console.log('current',currentImages);
+        const {images, currentImages, currentIdx} = this.state;
+        // console.log('current',currentImages);
         return (
-            <div className='carousel'>
-                <button className='button left-button' onClick={this.prevPhoto}>Previous</button>
+            <div className='carousel' tabIndex='0' onKeyDown = {this.detectKeyDown}>
+                <button className='button left-button' 
+                    onClick={this.prevPhoto}
+                    >Previous</button>
                 <div className="carousel-wrapper">
                     {currentImages.map(index => {
-                        return <Photo key={images[index].id} url={images[index].url} />
+                        return <Photo key={images[index].id} url={images[index].url} current = {index === currentIdx ? 'active-photo' : ''}/>
                     })}
                 </div>
-                <button className='button right-button' onClick={this.nextPhoto}>More</button>
+                <button className='button right-button' 
+                    onClick={this.nextPhoto}
+                    >More</button>
             </div>
         )
 
