@@ -101,7 +101,7 @@ class SignInForm extends React.Component {
                         <input type="password" onChange={this.handleChange('password')} value={this.state.password}></input>
                     </label>
                     { passwordTwo }
-                    <div className='sign-in-button' onClick={this.handleSubmit}>{action}</div>
+                    <button className='sign-in-button' onClick={this.handleSubmit}>{action}</button>
                 </form>
             </div>
         )
