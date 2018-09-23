@@ -5,7 +5,6 @@
     align-items: center;
     overflow-x: hidden;
     flex: 1;
-    position:relative;
     width: 98%;
 }
 
@@ -17,11 +16,12 @@
 }
 
 .carousel {
+    position:relative;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 100vw;
-    transition: 2s ease;
+    /* transition: 2s ease; */
 }
 
 .angle {
@@ -34,7 +34,7 @@ button {
 }
 
 .left-button, .right-button{
-    width: 80px;
+    width: 50px;
     margin: 0 5px;
     height: 70vh; 
 }
@@ -45,3 +45,5 @@ button {
     padding: 10px;
     box-sizing: 50px;
 }
+
+

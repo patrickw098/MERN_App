@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Photo from '../photos/photo';
 
 import './carousel.css';
+import { truncate } from 'fs';
 
 class Carousel extends React.Component {
     constructor(props){
@@ -149,7 +150,7 @@ class Carousel extends React.Component {
                 <button className='button left-button' 
                     onClick={(e) => this.handleArrowClick(-3,e)}
                     >    
-                    <i className="fas fa-angle-double-left"></i>
+                    <i className="fas angle fa-angle-double-left"></i>
                     </button>
                 <div className = 'wrapper'>
                     <div className="carousel-wrapper">
@@ -169,7 +170,7 @@ class Carousel extends React.Component {
                 <button className='button right-button' 
                     onClick={(e) => this.handleArrowClick(3,e)}
                     >
-                    <i className="fas fa-angle-double-right"></i>
+                    <i className="fas angle fa-angle-double-right"></i>
                     </button>
             </div>
         )
