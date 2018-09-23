@@ -19,3 +19,10 @@ a {
     flex-direction: column;
     justify-content: center;
 }
+
+.search-box-div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
