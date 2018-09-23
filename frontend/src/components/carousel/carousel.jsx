@@ -121,20 +121,29 @@ class Carousel extends React.Component {
 
     render(){
         const {images, currentImages, currentIdx} = this.state;
-        // console.log('current',currentImages);
         return (
             <div className='carousel' tabIndex='0' onKeyDown = {this.detectKeyDown}>
                 <button className='button left-button' 
                     onClick={this.prevPhoto}
-                    >Previous</button>
-                <div className="carousel-wrapper">
-                    {currentImages.map(index => {
-                        return <Photo key={images[index].id} url={images[index].url} current = {index === currentIdx ? 'active-photo' : ''}/>
-                    })}
+                    >
+                    <i className="fas fa-angle-left"></i>
+                    </button>
+                <div className = 'wrapper'>
+                    <div className="carousel-wrapper">
+                        {currentImages.map(index => {
+                            return <Photo key={images[index].id} url={images[index].url} current = {index === currentIdx ? 'active-photo' : ''}/>
+                        })}
+                    </div>
+                    <div className='selectors'>
+                        <button className = 'button left-select'> left </button>
+                        <button className = 'button right-select'>right</button>
+                    </div>
                 </div>
                 <button className='button right-button' 
                     onClick={this.nextPhoto}
-                    >More</button>
+                    >
+                    <i className="fas fa-angle-right"></i>
+                    </button>
             </div>
         )
 
@@ -147,7 +156,6 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    // logoutUser: () => dispatch(logoutUser()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Carousel);
