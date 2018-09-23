@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light');
+
+.sign-in-form{
+    display: flex;
+    width: 500px;
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    /* background: #FB4D3D; */
+    background: white;
+    /* border: 1px solid black; */
+    border-radius: 5px;
+    /* color: antiquewhite; */
+}
+
+.sign-up-welcome {
+    font-size: 30px;
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+p {
+    margin: 2px;
+    font-family: 'Shadows Into Light', cursive;
+}
+
+form {
+    display: flex;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    margin: 10px;
+    min-width: 200px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+input:focus {
+    border:3px solid darkred;
+}
+
+/* button {
+    background: #EAC435;
+    border-radius: 10px;
+    width: 100px;
+    height: 30px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+} */
+
+.sign-in-button {
+    width: 100%;
+    background-color: red;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.sign-in-button:hover {
+    background-color: darkred;
+}
+
+button:hover {
+    background: rgb(201, 158, 3);
+}
+
+.asterisk {
+    color: red;
+}
