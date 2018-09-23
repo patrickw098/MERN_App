@@ -11,13 +11,12 @@ class Body extends React.Component {
 
         return (
             <main className="main-body">
-                { currentUser ? (
-                    <SearchBox />
-                ) : ( null ) }
                 <div className="carousel-div">
-                    Some Carousel
                     <Carousel />
                 </div>
+                {currentUser ? (
+                    <SearchBox />
+                ) : <h1 className="search-box-div">Decide, what you want to eat by the way it looks.</h1>}
             </main>
         )
     }
