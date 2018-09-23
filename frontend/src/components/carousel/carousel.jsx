@@ -125,7 +125,9 @@ class Carousel extends React.Component {
             <div className='carousel' tabIndex='0' onKeyDown = {this.detectKeyDown}>
                 <button className='button left-button' 
                     onClick={this.prevPhoto}
-                    >Previous</button>
+                    >
+                    <i className="fas fa-angle-left"></i>
+                    </button>
                 <div className = 'wrapper'>
                     <div className="carousel-wrapper">
                         {currentImages.map(index => {
@@ -139,7 +141,9 @@ class Carousel extends React.Component {
                 </div>
                 <button className='button right-button' 
                     onClick={this.nextPhoto}
-                    >More</button>
+                    >
+                    <i className="fas fa-angle-right"></i>
+                    </button>
             </div>
         )
 
