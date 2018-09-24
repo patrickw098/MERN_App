@@ -4,15 +4,18 @@ import './icons.css';
 
 const PhotoIcons = (props) => {
     const{ info} = props;
-    const [url, price, is_closed] = [info.url, info.price, info.is_closed];
-    console.log('price',price);
+    let url, price, is_open, openNow, priceIcon;
+    
+    if(Object.keys(info).length !== 0){
+        [url, price, is_open] = [info.url, info.price, info.hours[0].is_open_now];
+    }
+    
     const dollar = <i className="fas fa-dollar-sign"></i>
-    let openNow, priceIcon;
+
     let prices = [];
     
     if(price){
-
-        if (is_closed) {
+        if (!is_open) {
             openNow = <div className='open-icon'>
                 <i className="fas fa-door-closed"></i>
             </div>
