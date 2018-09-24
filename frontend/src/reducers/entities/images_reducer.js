@@ -4,9 +4,10 @@ import { imageDefaults } from '../../config/vars';
 
 const imageReducer = (state = imageDefaults, action) => {
     Object.freeze(state);
+    console.log(action)
     switch (action.type) {
         case RECEIVE_QUERY:
-            return [...action.payload]
+            return [...action.payload.images]
         case RECEIVE_IMAGES:
             return [state.images, ...action.payload.images]
         default:

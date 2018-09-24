@@ -39,8 +39,9 @@ class Carousel extends React.Component {
         // document.removeEventListener('keydown', this.detectKeyDown);
     }
 
-    visitBusiness(){
+    visitBusiness(url){
         //go to business's page when photo gets selected
+        window.location = url;
     }
 
     switchImage(direction){
@@ -155,7 +156,11 @@ class Carousel extends React.Component {
                 <div className = 'wrapper'>
                     <div className="carousel-wrapper">
                         {currentImages.map(index => {
-                            return <Photo key={images[index].id} url={images[index].url} current = {index === currentIdx ? 'active-photo' : ''}/>
+                            return <Photo key={images[index].id} 
+                            url={images[index].url} current = {index === currentIdx ? 'active-photo' : ''}
+                            business_url={images[index].business_url}
+                            visitBusiness={this.visitBusiness}
+                            />
                         })}
                     </div>
                     <div className='selectors'>
@@ -181,6 +186,7 @@ class Carousel extends React.Component {
 const mapStateToProps = (state) => ({
     images: state.entities.images,
     currentUser: state.session,
+    businesses: state.entities.businesses
 })
 
 const mapDispatchToProps = (dispatch) => ({
