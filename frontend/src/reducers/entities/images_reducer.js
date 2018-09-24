@@ -9,7 +9,7 @@ const imageReducer = (state = imageDefaults, action) => {
         case RECEIVE_QUERY:
             return [...action.payload.images]
         case RECEIVE_IMAGES:
-            return [state.images, ...action.payload.images]
+            return state.concat(action.payload.images)
         default:
             return state;
     }

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { debounce } from '../../utils/timeout_utils';
 import { makeQuery } from '../../utils/image_utils';
+import { saveCurrentQuery } from '../../actions/image_actions';
 
 import './search_box.css';
 
@@ -31,6 +32,7 @@ class SearchBox extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
+        // this.props.saveCurrentQuery(this.state.query);
         this.props.makeQuery(this.state);
 
         this.setState({ 
@@ -72,6 +74,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     makeQuery: (query) => dispatch(makeQuery(query)),
+    saveCurrentQuery: (query) => dispatch(saveCurrentQuery(query)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBox);
