@@ -42,7 +42,7 @@ class Carousel extends React.Component {
 
     visitBusiness(url){
         //go to business's yelp page when photo gets selected
-        window.location = url;
+        // window.location = url;
     }
 
     switchImage(direction){
@@ -161,7 +161,7 @@ class Carousel extends React.Component {
                             url={images[index].url} current = {index === currentIdx ? 'active-photo' : ''}
                             business_url={images[index].business_url}
                             visitBusiness={this.visitBusiness}
-                            info = {this.props.businesses}
+                            info = {this.props.businesses[0]}
                             />
                         })}
                     </div>

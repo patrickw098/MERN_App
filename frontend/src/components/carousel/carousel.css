@@ -32,18 +32,18 @@
 button {
     color: white;
     background: rgb(255, 209, 93);
+    border-radius: 5px;
 }
 
 .left-button, .right-button{
-    width: 50px;
+    width: 60px;
     margin: 0 5px;
-    height: 70vh; 
+    height: 92%; 
 }
 
 .left-select, .right-select{
     margin: 2px;
-    border-radius: 5px;
-    padding: 10px;
+    padding: 7px;
     box-sizing: 50px;
 }
 

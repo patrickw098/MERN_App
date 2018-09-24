@@ -9,7 +9,7 @@ import { CSSTransition } from "react-transition-group";
 //props should just be the photo, business info obj, and method to to go business page on click
 const Photo = (props) => {
     const {url, business_url, visitBusiness, current, info} = props;
-    // console.log(info);
+    console.log(info);
     return (
         <CSSTransition
             in={true}

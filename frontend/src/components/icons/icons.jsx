@@ -3,9 +3,9 @@ import React from 'react';
 import './icons.css';
 
 const PhotoIcons = (props) => {
-    const{ info} = props;
+    const{ info } = props;
     let url, price, is_open, openNow, priceIcon;
-    
+    console.log(info)
     if(Object.keys(info).length !== 0){
         [url, price, is_open] = [info.url, info.price, info.hours[0].is_open_now];
     }
