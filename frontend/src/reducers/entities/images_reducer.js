@@ -6,7 +6,7 @@ const imageReducer = (state = imageDefaults, action) => {
     Object.freeze(state);
     switch (action.type) {
         case RECEIVE_QUERY:
-            return [...action.payload.images]
+            return [...action.payload]
         case RECEIVE_IMAGES:
             return [state.images, ...action.payload.images]
         default:
