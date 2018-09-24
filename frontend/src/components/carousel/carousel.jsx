@@ -151,51 +151,58 @@ class Carousel extends React.Component {
         console.log("buffering...");
         const { nextBusinesses } = this.props.businesses;
 
-        this.props.getMoreImages({ businesses: nextBusinesses })
+        if ( nextBusinesses && nextBusinesses.length > 1 ) {
+            this.props.getMoreImages({ businesses: nextBusinesses })
+        }
     }
 
     render(){
         const { currentImages, currentIdx } = this.state;
         const { images } = this.props;
 
-        if ( currentIdx > images.length - 3) {
+        if ( currentIdx > images.length - 3 ) {
             this.bufferImages();
         }
 
-        return (
-            <div className='carousel' tabIndex='0' onKeyDown = {this.detectKeyDown}>
-                <button className='button left-button' 
-                    onClick={(e) => this.handleArrowClick(-3,e)}
-                    >    
-                    <i className="fas angle fa-angle-double-left"></i>
-                    </button>
-                <div className = 'wrapper'>
-                    <div className="carousel-wrapper">
-                        {currentImages.map(index => {
-                            return <Photo key={images[index].id} 
-                            url={images[index].url} current = {index === currentIdx ? 'active-photo' : ''}
-                            business_url={images[index].business_url}
-                            visitBusiness={this.visitBusiness}
-                            info = {this.props.businesses}
-                            />
-                        })}
-                    </div>
-                    <div className='selectors'>
-                        <button className = 'button left-select' onClick ={this.prevPhoto}> 
-                            <i className="fas angle fa-angle-left"></i>
+        if ( images.index ) {
+            return ( null )
+        } else {
+
+            return (
+                <div className='carousel' tabIndex='0' onKeyDown = {this.detectKeyDown}>
+                    <button className='button left-button' 
+                        onClick={(e) => this.handleArrowClick(-3,e)}
+                        >    
+                        <i className="fas angle fa-angle-double-left"></i>
                         </button>
-                        <button className = 'button right-select' onClick = {this.nextPhoto}>
-                            <i className="fas angle fa-angle-right"></i>
-                        </button>
+                    <div className = 'wrapper'>
+                        <div className="carousel-wrapper">
+                            {currentImages.map(index => {
+                                return <Photo key={images[index].id} 
+                                url={images[index].url} current = {index === currentIdx ? 'active-photo' : ''}
+                                business_url={images[index].business_url}
+                                visitBusiness={this.visitBusiness}
+                                info = {this.props.businesses}
+                                />
+                            })}
+                        </div>
+                        <div className='selectors'>
+                            <button className = 'button left-select' onClick ={this.prevPhoto}> 
+                                <i className="fas angle fa-angle-left"></i>
+                            </button>
+                            <button className = 'button right-select' onClick = {this.nextPhoto}>
+                                <i className="fas angle fa-angle-right"></i>
+                            </button>
+                        </div>
                     </div>
+                    <button className='button right-button' 
+                        onClick={(e) => this.handleArrowClick(3,e)}
+                        >
+                        <i className="fas angle fa-angle-double-right"></i>
+                        </button>
                 </div>
-                <button className='button right-button' 
-                    onClick={(e) => this.handleArrowClick(3,e)}
-                    >
-                    <i className="fas angle fa-angle-double-right"></i>
-                    </button>
-            </div>
-        )
+            )
+        }
 
     }
 }
