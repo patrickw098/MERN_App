@@ -6,6 +6,7 @@ export const makeQuery = query => dispatch => {
     return axios.post('/api/images/search', query)
         .then(payload => {
             // payload.data.photos
+            console.log(payload.data);
             dispatch(receiveQuery(payload.data));
         })
 }
