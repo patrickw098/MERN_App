@@ -9,9 +9,9 @@
     -moz-transition: opacity 1s ease-in;
     transition: opacity 1s ease-in;
 
-    /* display: flex;
+    display: flex;
     flex-direction: column;
-    justify-content: space-around; */
+    justify-content: space-between;
 }
 
 .photo{
@@ -22,15 +22,15 @@
 
 .active-photo{
     opacity: 1;
-     -webkit-transition: opacity 1.0s ease-in;
-    -moz-transition: opacity 1.0s ease-in;
-    transition: opacity 1.0s ease-in;
+     -webkit-transition: opacity .6s ease-in;
+    -moz-transition: opacity .6s ease-in;
+    transition: opacity .6s ease-in;
     cursor: pointer;
 }
 
 .more-info{
     display: block;
-    margin-top: 15%;
+    margin-top: 5%;
 }
 
 /* CSS TRANSITION GROUP EFFECTS BELOW */

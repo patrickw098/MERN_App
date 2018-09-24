@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {Route, Link} from 'react-router-dom';
 
 import Photo from '../photos/photo';
 
 import './carousel.css';
-import { truncate } from 'fs';
+// import { truncate } from 'fs';
 
 class Carousel extends React.Component {
     constructor(props){
@@ -40,7 +41,7 @@ class Carousel extends React.Component {
     }
 
     visitBusiness(url){
-        //go to business's page when photo gets selected
+        //go to business's yelp page when photo gets selected
         window.location = url;
     }
 
@@ -160,6 +161,7 @@ class Carousel extends React.Component {
                             url={images[index].url} current = {index === currentIdx ? 'active-photo' : ''}
                             business_url={images[index].business_url}
                             visitBusiness={this.visitBusiness}
+                            info = {this.props.businesses}
                             />
                         })}
                     </div>
