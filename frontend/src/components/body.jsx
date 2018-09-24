@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import SearchBox from './search/search_box';
-import Carousel from './carousel/carousel';
+import Carousel from './carousel/carousel2';
 
 class Body extends React.Component {
     

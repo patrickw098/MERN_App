@@ -4,9 +4,9 @@ import {Route, Link} from 'react-router-dom';
 
 import Photo from '../photos/photo';
 
-import './carousel.css';
 import { getMoreImages } from '../../utils/image_utils';
 // import { truncate } from 'fs';
+import './carousel.css';
 
 class Carousel extends React.Component {
     constructor(props){
