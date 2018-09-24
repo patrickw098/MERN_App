@@ -4,3 +4,9 @@
     justify-content: space-around;
     margin-bottom: 10px;
 }
+
+.b-icon{
+    font-size: 20px;
+    text-shadow: 1px 2px 3px rgba(154, 152, 152, 0.5);
+    /* text-shadow: distanceX distanceY size color; */
+}

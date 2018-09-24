@@ -9,24 +9,22 @@ const PhotoIcons = (props) => {
     if(Object.keys(info).length !== 0){
         [url, price, is_open] = [info.url, info.price, info.hours[0].is_open_now];
     }
-    
-    const dollar = <i className="fas fa-dollar-sign"></i>
 
     let prices = [];
     
     if(price){
         if (!is_open) {
             openNow = <div className='open-icon'>
-                <i className="fas fa-door-closed"></i>
+                <i className="b-icon fas fa-door-closed"></i>
             </div>
         } else {
             openNow = <div className='open-icon'>
-                <i className="fas fa-door-open"></i>
+                <i className="b-icon fas fa-door-open"></i>
             </div>
         }
 
         for (let i = 0; i < price.length; i++) {
-            prices.push(<i key={i} className="fas fa-dollar-sign"></i>)
+            prices.push(<i key={i} className="b-icon fas fa-dollar-sign"></i>)
         }
 
         priceIcon = <div className='price-icon'>
@@ -34,11 +32,11 @@ const PhotoIcons = (props) => {
         </div>
     }else{
         priceIcon = <div className='price-icon'>
-            {dollar}
+            <i className="b-icon fas fa-dollar-sign"></i>
         </div> 
 
         openNow = <div className='open-icon'>
-            <i className="fas fa-door-open"></i>
+            <i className="b-icon fas fa-door-open"></i>
         </div>
     }
 
@@ -46,7 +44,7 @@ const PhotoIcons = (props) => {
    return (
        <div className='icons-container'>
            <div className='yelp' onClick = {() => window.location = url}>
-             <i className="fab fa-yelp"></i>
+               <i className="b-icon fab fa-yelp"></i>
            </div>
            <div className='price'>
             {priceIcon}

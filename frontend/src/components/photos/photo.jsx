@@ -19,7 +19,7 @@ const Photo = (props) => {
         >
         <div key = 'pic' className={`photo-container ${current}`}>
             <img className={`photo`} src={url} alt='food' onClick = {visitBusiness}/>
-            <div className='more-info'>Click photo for more info</div>
+            {/* <div className='more-info'>Click photo for more info</div> */}
             <PhotoIcons info = {info}/>
         </div>
         </CSSTransition>
