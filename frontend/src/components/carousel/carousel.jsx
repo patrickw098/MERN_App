@@ -182,7 +182,7 @@ class Carousel extends React.Component {
                                 url={images[index].url} current = {index === currentIdx ? 'active-photo' : ''}
                                 business_url={images[index].business_url}
                                 visitBusiness={this.visitBusiness}
-                                info = {this.props.businesses}
+                                info={this.props.businesses[images[index].businessId]}
                                 />
                             })}
                         </div>
