@@ -22,7 +22,7 @@ class Carousel extends React.Component {
         this.nextPhoto = this.nextPhoto.bind(this);
         this.prevPhoto = this.prevPhoto.bind(this);
         this.detectKeyDown = this.detectKeyDown.bind(this);
-        this.handleArrowClick = this.handleArrowClick.bind(this);
+        // this.handleArrowClick = this.handleArrowClick.bind(this);
     }
 
     componentWillReceiveProps(newProps) {
@@ -44,6 +44,15 @@ class Carousel extends React.Component {
     visitBusiness(url){
         //go to business's yelp page when photo gets selected
         // window.location = url;
+    }
+
+    activateImage(e){
+        //remove active class from currentIdx image
+        let activeImg = document.querySelector('.active-photo');
+        activeImg.classList.remove('active-photo')
+        //add active class to clicked images
+        let currentImg = e.currentTarget;
+        currentImg.classList.add('active-photo');
     }
 
     switchImage(direction){
@@ -85,23 +94,24 @@ class Carousel extends React.Component {
         if ( len !== copy.length ){
             this.setState({
                 images: copy
-            }, () => console.log(copy))
+            }, () => console.log('newimages', this.state))
         }
 
         return newImages;
     }
 
-    handleArrowClick(direction, e){
-        e.preventDefault();
-        const {currentIdx, images} = this.state;
-        const newIdx = currentIdx + direction;
-        if(newIdx >= 0 && newIdx < images.length - 1){
-            this.setState({
-                currentIdx: newIdx,
-                currentImages: this.rotateImages(direction)
-            })
-        }
-    }
+    // handleArrowClick(direction, e){
+    //     e.preventDefault();
+    //     const {currentIdx, images} = this.state;
+    //     const newIdx = currentIdx + direction;
+    //     console.log(newIdx);
+    //     if(newIdx >= 0 && newIdx < images.length - 1){
+    //         this.setState({
+    //             currentIdx: newIdx,
+    //             currentImages: this.rotateImages(direction)
+    //         }, console.log(this.state))
+    //     }
+    // }
 
     nextPhoto(e){
         e.preventDefault();
@@ -114,10 +124,6 @@ class Carousel extends React.Component {
                 console.log(this.state);
             })
         }
-
-        // if (this.state.currentIdx > 5){
-        //     //make api call to yelp to update the state of the images
-        // }
     }
 
     prevPhoto(e){
@@ -160,6 +166,7 @@ class Carousel extends React.Component {
         const { currentImages, currentIdx } = this.state;
         const { images } = this.props;
 
+
         if ( currentIdx > images.length - 3 ) {
             this.bufferImages();
         }
@@ -170,11 +177,11 @@ class Carousel extends React.Component {
 
             return (
                 <div className='carousel' tabIndex='0' onKeyDown = {this.detectKeyDown}>
-                    <button className='button left-button' 
+                    {/* <button className='button left-button' 
                         onClick={(e) => this.handleArrowClick(-3,e)}
                         >    
                         <i className="fas angle fa-angle-double-left"></i>
-                        </button>
+                        </button> */}
                     <div className = 'wrapper'>
                         <div className="carousel-wrapper">
                             {currentImages.map(index => {
@@ -182,6 +189,7 @@ class Carousel extends React.Component {
                                 url={images[index].url} current = {index === currentIdx ? 'active-photo' : ''}
                                 business_url={images[index].business_url}
                                 visitBusiness={this.visitBusiness}
+                                activateImage={this.activateImage}
                                 info={this.props.businesses[images[index].businessId]}
                                 />
                             })}
@@ -195,11 +203,11 @@ class Carousel extends React.Component {
                             </button>
                         </div>
                     </div>
-                    <button className='button right-button' 
+                    {/* <button className='button right-button' 
                         onClick={(e) => this.handleArrowClick(3,e)}
                         >
                         <i className="fas angle fa-angle-double-right"></i>
-                        </button>
+                        </button> */}
                 </div>
             )
         }
