@@ -3,9 +3,15 @@
     margin-left: 5px;
     margin-right: 5px;
 
-    /* width: 300px; */
-    height: 70vh;  
+    height: 100%;  
     opacity: .6;
+    -webkit-transition: opacity 1s ease-in;
+    -moz-transition: opacity 1s ease-in;
+    transition: opacity 1s ease-in;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .photo{
@@ -16,4 +22,47 @@
 
 .active-photo{
     opacity: 1;
+     -webkit-transition: opacity .6s ease-in;
+    -moz-transition: opacity .6s ease-in;
+    transition: opacity .6s ease-in;
+    cursor: pointer;
+}
+
+.more-info{
+    display: block;
+    margin-top: 5%;
+}
+
+/* CSS TRANSITION GROUP EFFECTS BELOW */
+
+/* appear - on page load */
+.fade-appear {
+    opacity: 0;
+    /* z-index: 1; */
+}
+.fade-appear.fade-appear-active {
+  opacity: .6;
+  transition: opacity 2000ms linear;
+}
+
+/* enter */
+.fade-enter {
+  opacity: 0;
+  /* z-index: 1; */
+}
+.fade-enter.fade-enter-active {
+    opacity: .6;
+    transition: opacity 5000ms linear 5000ms;
+}
+
+/* exit */
+.fade-exit {
+    opacity: .6;
+}
+.fade-exit.fade-exit-active {
+    opacity: 0;
+    transition: opacity 5000ms linear;
+}
+.fade-exit-done {
+  opacity: 0;
 }

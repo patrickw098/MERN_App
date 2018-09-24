@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {Route, Link} from 'react-router-dom';
 
 import Photo from '../photos/photo';
 
 import './carousel.css';
+// import { truncate } from 'fs';
 
 class Carousel extends React.Component {
     constructor(props){
@@ -19,6 +21,7 @@ class Carousel extends React.Component {
         this.nextPhoto = this.nextPhoto.bind(this);
         this.prevPhoto = this.prevPhoto.bind(this);
         this.detectKeyDown = this.detectKeyDown.bind(this);
+        this.handleArrowClick = this.handleArrowClick.bind(this);
     }
 
     componentWillReceiveProps(newProps) {
@@ -37,15 +40,26 @@ class Carousel extends React.Component {
         // document.removeEventListener('keydown', this.detectKeyDown);
     }
 
-    visitBusiness(){
-        //go to business's page when photo gets selected
+    visitBusiness(url){
+        //go to business's yelp page when photo gets selected
+        window.location = url;
     }
 
-    rotateImages(direction){
-        let { currentImages, images, currentIdx, noImg } = this.state;
+    switchImage(direction){
+        let { currentImages, currentIdx} = this.state;
         const newIdx = currentIdx + direction;
         //if new Index is still in current images, return the currentImages
-        if ( currentImages.includes(newIdx) ) return currentImages;
+        if (currentImages.includes(newIdx)) return currentImages;
+
+        const newImages = this.rotateImages(direction);
+        return newImages;
+    }
+
+
+    rotateImages(direction){
+        let { currentImages, images, noImg, currentIdx } = this.state;
+        const newIdx = currentIdx + direction;
+        if (newIdx > images.length -1 || newIdx < 0) return currentImages;
         //if forward direction, update by 3
         let newImages;
         if ( direction > 0 ){
@@ -75,13 +89,25 @@ class Carousel extends React.Component {
         return newImages;
     }
 
+    handleArrowClick(direction, e){
+        e.preventDefault();
+        const {currentIdx, images} = this.state;
+        const newIdx = currentIdx + direction;
+        if(newIdx >= 0 && newIdx < images.length - 1){
+            this.setState({
+                currentIdx: newIdx,
+                currentImages: this.rotateImages(direction)
+            })
+        }
+    }
+
     nextPhoto(e){
         e.preventDefault();
 
         if( this.state.currentIdx < this.state.images.length - 1 ){
             this.setState({
                 currentIdx: this.state.currentIdx + 1,
-                currentImages: this.rotateImages(1)
+                currentImages: this.switchImage(1)
             }, () => {
                 console.log(this.state);
             })
@@ -97,7 +123,7 @@ class Carousel extends React.Component {
         if ( this.state.currentIdx > 0 ) {
             this.setState({
                 currentIdx: this.state.currentIdx - 1,
-                currentImages: this.rotateImages(-1)
+                currentImages: this.switchImage(-1)
             }, () => {
                 console.log(this.state);
             })
@@ -124,25 +150,34 @@ class Carousel extends React.Component {
         return (
             <div className='carousel' tabIndex='0' onKeyDown = {this.detectKeyDown}>
                 <button className='button left-button' 
-                    onClick={this.prevPhoto}
-                    >
-                    <i className="fas fa-angle-left"></i>
+                    onClick={(e) => this.handleArrowClick(-3,e)}
+                    >    
+                    <i className="fas angle fa-angle-double-left"></i>
                     </button>
                 <div className = 'wrapper'>
                     <div className="carousel-wrapper">
                         {currentImages.map(index => {
-                            return <Photo key={images[index].id} url={images[index].url} current = {index === currentIdx ? 'active-photo' : ''}/>
+                            return <Photo key={images[index].id} 
+                            url={images[index].url} current = {index === currentIdx ? 'active-photo' : ''}
+                            business_url={images[index].business_url}
+                            visitBusiness={this.visitBusiness}
+                            info = {this.props.businesses}
+                            />
                         })}
                     </div>
                     <div className='selectors'>
-                        <button className = 'button left-select'> left </button>
-                        <button className = 'button right-select'>right</button>
+                        <button className = 'button left-select' onClick ={this.prevPhoto}> 
+                            <i className="fas angle fa-angle-left"></i>
+                        </button>
+                        <button className = 'button right-select' onClick = {this.nextPhoto}>
+                            <i className="fas angle fa-angle-right"></i>
+                        </button>
                     </div>
                 </div>
                 <button className='button right-button' 
-                    onClick={this.nextPhoto}
+                    onClick={(e) => this.handleArrowClick(3,e)}
                     >
-                    <i className="fas fa-angle-right"></i>
+                    <i className="fas angle fa-angle-double-right"></i>
                     </button>
             </div>
         )
@@ -153,6 +188,7 @@ class Carousel extends React.Component {
 const mapStateToProps = (state) => ({
     images: state.entities.images,
     currentUser: state.session,
+    businesses: state.entities.businesses
 })
 
 const mapDispatchToProps = (dispatch) => ({

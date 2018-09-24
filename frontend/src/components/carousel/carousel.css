@@ -2,15 +2,49 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     overflow-x: hidden;
     flex: 1;
-    position: relative;
+    width: 98%;
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .carousel {
+    position:relative;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 100vw;
-    transition: 2s ease;
+    /* width: 100vw; */
+    height: 70vh;
+    /* transition: 2s ease; */
 }
+
+.angle {
+    font-size: 30px;
+}
+
+button {
+    color: white;
+    background: rgb(255, 209, 93);
+}
+
+.left-button, .right-button{
+    width: 50px;
+    margin: 0 5px;
+    height: 70vh; 
+}
+
+.left-select, .right-select{
+    margin: 2px;
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: 50px;
+}
+
+

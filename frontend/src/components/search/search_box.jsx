@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { debounce } from '../../utils/timeout_utils';
 import { makeQuery } from '../../utils/image_utils';
 
+import './search_box.css';
+
 class SearchBox extends React.Component {
     constructor(props) {
         super(props);
@@ -57,7 +59,7 @@ class SearchBox extends React.Component {
                 <h1>Welcome, { currentUser.name }, what would you like to eat?</h1>
                 <form className="search-box-subdiv">
                     <input id="input-bar" onChange={this.handleChange} className="search-box-input" value={this.state.query}/>
-                    <button onClick={this.handleSubmit}>Search</button>
+                    <button className='search-button' onClick={this.handleSubmit}>Search</button>
                 </form>
             </div>
         )

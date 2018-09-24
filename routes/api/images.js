@@ -18,18 +18,21 @@ router.post('/search', (req, res) => {
     axios.get('https://api.yelp.com/v3/businesses/search', options)
         .then(payload => {
             const id = payload.data.businesses[0].id
+            // console.log(payload.data.businesses)
 
             axios.get(`https://api.yelp.com/v3/businesses/${id}`, {
                 headers: { 'Authorization': `Bearer ${keys.APIKey}` }
             })
-                .then( payload => {
+                .then( (payload) => {
                     let photosArr = payload.data.photos;
+                    let business = payload.data;
 
                     photosArr = photosArr.map( (photo,idx) => {
-                        return { id: idx, url: photo}
+                        return { id: idx, url: photo, business_url: business.url}
                     })
 
-                    res.json(photosArr);
+                    const returnVal = {images: photosArr, businesses: business};
+                    res.json(returnVal);
                 })
         })
         .catch(err => console.log(err))
