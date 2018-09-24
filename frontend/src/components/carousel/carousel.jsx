@@ -47,6 +47,7 @@ class Carousel extends React.Component {
     }
 
     activateImage(e){
+        console.log(e.currentTarget);
         //remove active class from currentIdx image
         let activeImg = document.querySelector('.active-photo');
         activeImg.classList.remove('active-photo')
