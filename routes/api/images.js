@@ -16,25 +16,9 @@ router.post('/search', (req, res) => {
     Query.findOne({ term: query })
         .then( queryRes => {
             if ( queryRes ) {
-                console.log("You made a database query for:", queryRes);
-                let photosArr = [];
-
-                axios.get(`https://api.yelp.com/v3/businesses/${queryRes.businesses[0].id}`, {
-                    headers: { 'Authorization': `Bearer ${keys.APIKey}` }
-                })
-                    .then(payload => {
-                        let currPhotos = payload.data.photos;
-
-                        currPhotos = currPhotos.map((photo, idx) => {
-                            return { id: idx, url: photo }
-                        })
-
-                        photosArr = photosArr.concat(currPhotos)
-
-                        res.json({ images: photosArr, businesses: queryRes.businesses });
-                    })
-                    .catch(err => console.log(err));
-
+                console.log("You made a database query for:", query)
+                
+                requestImages(queryRes.businesses, res)
             } else {
                 const options = {
                     headers: { 'Authorization': `Bearer ${keys.APIKey}` },
@@ -57,35 +41,47 @@ router.post('/search', (req, res) => {
                             businesses: businesses,
                         })
 
-                        newQuery.save().then( query => console.log(query) );
+                        newQuery.save();
 
-                        let photosArr = [];
-                        let count = 0;
-                        let length = 0;
+                        requestImages(businesses, res)
 
-                        console.log("making axios call");
-                        axios.get(`https://api.yelp.com/v3/businesses/${businesses[0].id}`, {
-                            headers: { 'Authorization': `Bearer ${keys.APIKey}` }
-                        })
-                            .then(payload => {
-                                let currPhotos = payload.data.photos;
-
-                                currPhotos = currPhotos.map((photo, idx) => {
-                                    return { id: idx, url: photo }
-                                })
-
-                                photosArr = photosArr.concat(currPhotos)
-
-                                res.json({ images: photosArr, businesses: businesses });
-                            })
-                            .catch(err => console.log(err));
-
-                             
                     })
                     .catch(err => console.log(err));
             }
         })
 
 })
+
+router.post('/buffer', (req, res) => {
+    const { businesses } = req.body;
+
+    requestImages(businesses, res);
+})
+
+const requestImages = (businesses, res, n = 0) => {
+    let nthBusiness = businesses[n];
+
+    axios.get(`https://api.yelp.com/v3/businesses/${nthBusiness.id}`, {
+        headers: { 'Authorization': `Bearer ${keys.APIKey}` }
+    })
+        .then(payload => {
+            let currPhotos = payload.data.photos;
+
+            currPhotos = currPhotos.map((photo, idx) => {
+                return { id: idx, url: photo, businessId: nthBusiness.id }
+            })
+
+            // return everything but the current business for future queries.
+            res.json({ 
+                images: currPhotos, 
+                businesses: { 
+                    [payload.data.id]: payload.data,
+                    nextBusinesses: businesses.slice(1),
+                }
+            });
+        })
+        .catch(err => console.log(err));
+
+}
 
 module.exports = router;
