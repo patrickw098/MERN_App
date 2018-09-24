@@ -5,6 +5,7 @@ import {Route, Link} from 'react-router-dom';
 import Photo from '../photos/photo';
 
 import './carousel.css';
+import { getMoreImages } from '../../utils/image_utils';
 // import { truncate } from 'fs';
 
 class Carousel extends React.Component {
@@ -42,7 +43,7 @@ class Carousel extends React.Component {
 
     visitBusiness(url){
         //go to business's yelp page when photo gets selected
-        window.location = url;
+        // window.location = url;
     }
 
     switchImage(direction){
@@ -59,6 +60,7 @@ class Carousel extends React.Component {
     rotateImages(direction){
         let { currentImages, images, noImg, currentIdx } = this.state;
         const newIdx = currentIdx + direction;
+
         if (newIdx > images.length -1 || newIdx < 0) return currentImages;
         //if forward direction, update by 3
         let newImages;
@@ -145,8 +147,21 @@ class Carousel extends React.Component {
         } 
     }
 
+    bufferImages() {
+        console.log("buffering...");
+        const { nextBusinesses } = this.props.businesses;
+
+        this.props.getMoreImages({ businesses: nextBusinesses })
+    }
+
     render(){
-        const {images, currentImages, currentIdx} = this.state;
+        const { currentImages, currentIdx } = this.state;
+        const { images } = this.props;
+
+        if ( currentIdx > images.length - 3) {
+            this.bufferImages();
+        }
+
         return (
             <div className='carousel' tabIndex='0' onKeyDown = {this.detectKeyDown}>
                 <button className='button left-button' 
@@ -192,6 +207,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
+    getMoreImages: (businesses) => dispatch(getMoreImages(businesses)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Carousel);
