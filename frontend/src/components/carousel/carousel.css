@@ -32,7 +32,7 @@
     width: 100%;
     z-index: 0;
     box-shadow: 10px 10px 10px gray;
-    border: 5px solid red;
+    /* border: 5px solid red; */
     border-radius: 5px;
 }
 
@@ -61,7 +61,7 @@ button {
 /* carousel2 */
 
 .center-li {
-    width: 50%;
+    /* width: 50%; */
     height: 85%;
     transform: scale(1);
     -webkit-transform: scale(1);
@@ -87,6 +87,7 @@ button {
     -webkit-transition-duration: .7s;
     -o-transition-duration: .7s;
     z-index: 9999999;
+    border: 5px solid #d32323;
 }
 
 .right-li, .left-li, .white-rect {
@@ -98,10 +99,8 @@ button {
 .white-rect {
     width: 100%;
     border: none;
-}
-
-li {
-
+    background: white !important;
+    box-shadow: none !important;
 }
 
 img{

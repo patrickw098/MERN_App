@@ -1,5 +1,41 @@
 .footer {
     height: 50px;
     padding: 10px;
-    border-top: 1px solid black;
+    border-top: 1px solid rgba(25,4,69,0.2);
+}
+
+
+.links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.linked-in {
+    display: flex;
+    flex-direction: row;
+    width: 220px;
+    height: 100%;
+    justify-content: space-between;
+    /* text-align: center;
+    align-items: center; */
+}
+
+.linked-in a {
+    color: black;
+    font-family: 'Helvetica';
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.fa-github-alt, .fa-linkedin {
+    font-size: 26px;
+    text-shadow: 2px 2px 1px rgba(0,0,0, 0.2);
+}
+
+.fa-linkedin{
+    color:#0073b1;
 }

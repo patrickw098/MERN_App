@@ -42,15 +42,16 @@ const PhotoIcons = (props) => {
 
 
    return (
+    
        <div className='icons-container'>
            <div className='price'>
-            {priceIcon}
+            {info ? priceIcon : null}
            </div>
-           <div className='yelp' onClick={() => window.location = url}>
-               <i className="b-icon fab fa-yelp"></i>
+           <div className='yelp'>
+               {info ? <a href={url}><i className="b-icon fab fa-yelp"></i></a>: null}
            </div>
            <div className='open'>
-            {openNow}
+            {info ? openNow : null}
            </div>
        </div>
    )
