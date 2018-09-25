@@ -75,7 +75,7 @@ button {
     height: 100%;
     border-radius: 10px;
     box-shadow: 20px 20px 20px gray;
-    z-index: 999;
+    z-index: 99;
     /* border: 10px groove rgba(0, 0, 0); */
 }
 
@@ -86,7 +86,7 @@ button {
     transition-duration: .7s;
     -webkit-transition-duration: .7s;
     -o-transition-duration: .7s;
-    z-index: 9999999;
+    z-index: 99;
 }
 
 .right-li, .left-li, .white-rect {

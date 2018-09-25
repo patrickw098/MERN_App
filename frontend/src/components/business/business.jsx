@@ -8,7 +8,8 @@ class Business extends React.Component{
 
     render(){
         return(
-            <div></div>
+            <div className='business-container'>
+            </div>
         )
     }
 }

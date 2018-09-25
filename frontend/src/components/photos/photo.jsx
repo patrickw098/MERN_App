@@ -40,11 +40,11 @@ const Photo = (props) => {
             timeout={2000}
             classNames="fade"
         >
-            <div key = 'pic' className={'photo-container'} onClick={activateImage}
+            <div key = 'pic' className={'photo-container'}
             onMouseOver={() => displayIcons()} onMouseOut={() => hideIcons()}
             >
                 <img className={`photo ${current}`} src={url} alt='food' onClick = {visitBusiness}/>
-                { center  ? <PhotoIcons info={info} /> : <div></div>}
+                {/* { center  ? <PhotoIcons info={info} /> : <div></div>} */}
             </div>
         </CSSTransition>
     )

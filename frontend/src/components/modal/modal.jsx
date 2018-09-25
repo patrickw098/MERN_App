@@ -7,6 +7,8 @@ import { closeModal } from '../../actions/modal_actions';
 import { setAuthToken } from '../../utils/session_api_utils';
 import SignUpForm from './session/sign_in_form';
 
+import PhotoIcons from '../icons/icons';
+
 import './modal.css';
 
 class Modal extends React.Component {
@@ -28,7 +30,7 @@ class Modal extends React.Component {
     }
 
     render() {
-        const { modal, closeModal } = this.props;
+        const { modal, closeModal, currentImage } = this.props;
 
         if (!modal) {
             return null;
@@ -42,6 +44,9 @@ class Modal extends React.Component {
                 break;
             case 'Log In': 
                 component = <SignUpForm />
+                break;
+            case 'Icons':
+                component = <PhotoIcons info={this.props.businesses[currentImage.businessId]}/>
                 break;
             default:
                 return null;
@@ -59,6 +64,8 @@ class Modal extends React.Component {
 
 const mapStateToProps = state => ({
     modal: state.ui.modal,
+    businesses: state.entities.businesses,
+    currentImage: state.entities.currentImage
 });
 
 const mapDispatchToProps = dispatch => ({

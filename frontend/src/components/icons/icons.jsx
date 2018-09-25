@@ -40,18 +40,23 @@ const PhotoIcons = (props) => {
         </div>
     }
 
+    const visitBusiness = (e) => {
+        e.preventDefault();
+        window.location = url;
+    }
+
 
    return (
        <div className='icons-container'>
-           <div className='price'>
+           {/* <div className='price'> */}
             {priceIcon}
-           </div>
-           <div className='yelp' onClick={() => window.location = url}>
+           {/* </div> */}
+           <div className='yelp-icon' onClick={(e) => visitBusiness(e)}>
                <i className="b-icon fab fa-yelp"></i>
            </div>
-           <div className='open'>
+           {/* <div className='open'> */}
             {openNow}
-           </div>
+           {/* </div> */}
        </div>
    )
 }

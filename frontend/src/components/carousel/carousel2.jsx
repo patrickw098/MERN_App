@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 
 import { getMoreImages } from '../../utils/image_utils';
 
+import { receiveImage } from '../../actions/image_actions';
+
+import { register } from '../../actions/modal_actions';
+
 import Photo from '../photos/photo';
 
 import './carousel.css';
@@ -18,16 +22,20 @@ class Carousel extends React.Component {
         this.detectKeyDown = this.detectKeyDown.bind(this);
         this.moveLeft = this.moveLeft.bind(this);
         this.moveRight = this.moveRight.bind(this);
+        this.openModal = this.openModal.bind(this);
     }
 
     componentDidMount() {
         this.event = document.addEventListener('keydown', this.detectKeyDown);
+        this.props.receiveImage(this.props.images[this.state.idx])
     }
 
     componentWillReceiveProps(newProps) {
         if ( newProps.images.length - 1 < this.state.idx ) {
             this.setState({
                 idx: 0,
+            }, () => {
+                this.props.receiveImage(newProps.images[this.state.idx])
             })
         }
     }
@@ -54,12 +62,16 @@ class Carousel extends React.Component {
     moveLeft() {
         this.setState({
             idx: this.state.idx - 1
+        }, () => {
+            this.props.receiveImage(this.props.images[this.state.idx])
         })
     }
 
     moveRight() {    
         this.setState({
             idx: this.state.idx + 1
+        }, () => {
+            this.props.receiveImage(this.props.images[this.state.idx])
         })
     }
 
@@ -70,6 +82,11 @@ class Carousel extends React.Component {
         if (nextBusinesses && nextBusinesses.length > 1) {
             this.props.getMoreImages({ businesses: nextBusinesses })
         }
+    }
+
+    openModal(e) {
+        e.preventDefault();
+        this.props.register('Icons');
     }
 
     render() {
@@ -94,13 +111,13 @@ class Carousel extends React.Component {
                             />
                         </li>
                     ) : ( <li className="white-rect"></li> )}
-                    <li className="center-li">
+                    <li className="center-li" onClick = {this.openModal}>
                         {/* <img className="center-photo" src={images[idx].url} ></img> */}
                         <Photo key={images[idx].id}
                             url={images[idx].url} current=''
                             business_url={images[idx].business_url}
                             info={this.props.businesses[images[idx].businessId]}
-                            center={true}
+                            // center={true}
                         />
                     </li>
                     { images[idx + 1] ? (
@@ -123,11 +140,14 @@ class Carousel extends React.Component {
 const mapStateToProps = state => ({
     businesses: state.entities.businesses,
     images: state.entities.images,
-    currentUser: state.session.id
+    currentUser: state.session.id,
+    currentImage: state.entities.currentImage
 })
 
 const mapDispatchToProps = dispatch => ({
-    getMoreImages: (businesses) => dispatch(getMoreImages(businesses))
+    getMoreImages: (businesses) => dispatch(getMoreImages(businesses)),
+    receiveImage: (img) => dispatch(receiveImage(img)),
+    register: (txt) => dispatch(register(txt))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Carousel);
