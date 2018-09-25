@@ -1,11 +1,13 @@
 .carousel-wrapper{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     overflow-x: hidden;
-    flex: 1;
-    width: 98%;
+    /* flex: 1; */
+    width: 100%;
+    background-color: white;
+    flex-shrink: 0;
 }
 
 .wrapper{
@@ -23,6 +25,12 @@
     /* width: 100vw; */
     height: 70vh;
     /* transition: 2s ease; */
+}
+
+.carousel li {
+    width: 100%;
+    z-index: 0;
+    box-shadow: 10px 10px 10px gray;
 }
 
 .angle {
@@ -45,6 +53,20 @@ button {
     border-radius: 5px;
     padding: 10px;
     box-sizing: 50px;
+}
+
+.center-photo {
+    width: 800px;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 20px 20px 20px gray;
+    z-index: 999;
+    /* border: 10px groove rgba(0, 0, 0); */
+}
+
+.white-rect {
+    width: 100%;
+    border: none;
 }
 
 

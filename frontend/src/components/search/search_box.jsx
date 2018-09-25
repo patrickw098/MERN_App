@@ -58,10 +58,10 @@ class SearchBox extends React.Component {
 
         return (
             <div className="search-box-div" onSubmit={this.handleSubmit}>
-                <h1>Welcome, { currentUser.name }, what would you like to eat?</h1>
+                <h1 className="welcome-message">Welcome, { currentUser.name }</h1>
                 <form className="search-box-subdiv">
-                    <input id="input-bar" onChange={this.handleChange} className="search-box-input" value={this.state.query}/>
-                    <button className='search-button' onClick={this.handleSubmit}>Search</button>
+                    <input id="input-bar" onChange={this.handleChange} className="search-box-input" value={this.state.query} placeholder="What would you like to eat?"/>
+                    <button className='search-button' onClick={this.handleSubmit}><i class="fas fa-search"></i></button>
                 </form>
             </div>
         )

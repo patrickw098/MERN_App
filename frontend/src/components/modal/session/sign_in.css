@@ -37,14 +37,14 @@ form {
     align-items: center;
 }
 
-input {
-    margin: 10px;
+.sign-in-form input {
+    margin: 10px 0px;
     min-width: 200px;
     height: 30px;
     border-radius: 5px;
 }
 
-input:focus {
+.sign-in-form input:focus {
     border:3px solid darkred;
 }
 
@@ -60,7 +60,7 @@ input:focus {
 
 .sign-in-button {
     width: 100%;
-    background-color: red;
+    background-color: #d32323;
     height: 50px;
     display: flex;
     flex-direction: column;

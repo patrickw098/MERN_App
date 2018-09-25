@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import SearchBox from './search/search_box';
-import Carousel from './carousel/carousel';
+import Carousel from './carousel/carousel2';
 
 class Body extends React.Component {
     
@@ -16,7 +16,7 @@ class Body extends React.Component {
                 </div>
                 {currentUser ? (
                     <SearchBox />
-                ) : <h1 className="search-box-div">Decide, what you want to eat by the way it looks.</h1>}
+                ) : <div className="search-box-div"><h2 className="slogan">Feast Your Eyes</h2></div>}
             </main>
         )
     }
