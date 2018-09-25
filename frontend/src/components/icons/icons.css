@@ -1,29 +1,71 @@
 .icons-container{
-    /* display: flex; */
-    display: none;
+    display: flex;
+    visibility: hidden;
     flex-direction: row;
     justify-content: space-around;
     margin-bottom: 20px;
 
     position: absolute;
     width: 100%;
-    bottom: 5px;;
-    /* transform: translateY(90%); */
+    bottom: 5px;
+    opacity: 0;
+    transition-duration: .7s;
+    -webkit-transition-duration: .7s;
+    -o-transition-duration: .7s;
 }
+
 
 .b-icon{
     font-size: 30px;
     text-shadow: 1px 2px 3px rgba(154, 152, 152, 0.5);
     color: white;
-    transition-duration: 1s;
+    cursor: default;
     /* text-shadow: distanceX distanceY size color; */
 }
 
-.b-icon:hover{
+.fa-yelp:hover{
+    color: red;
     transform: scale(1.5);
     -webkit-transform: scale(1.5);
     -o-transform: scale(1.5);
     transition-duration: .7s;
     -webkit-transition-duration: .7s;
     -o-transition-duration: .7s;
+    cursor: pointer;
+}
+
+/* .fa-door-open:hover:after{
+    content:'Open now!';
+    position: absolute;
+    right: 0;
+    bottom: -20px;
+    color: green;
+    font-family: 'Helvetica', 'sans-serif';
+    font-size: 20px;
+    background-color: white;
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 3px;
+} */
+
+.fa-door-open:hover {
+    color: lightgreen;
+    transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+    -o-transform: scale(1.5);
+    transition-duration: .7s;
+    -webkit-transition-duration: .7s;
+    -o-transition-duration: .7s;
+    /* cursor: pointer; */
+}
+
+.fa-door-closed:hover {
+    color: grey;
+    transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+    -o-transform: scale(1.5);
+    transition-duration: .7s;
+    -webkit-transition-duration: .7s;
+    -o-transition-duration: .7s;
+    /* cursor: pointer; */
 }

@@ -84,8 +84,14 @@ class Carousel extends React.Component {
             <div className="carousel">
                 <ul className="carousel-wrapper">
                     { images[idx - 1] ? ( 
-                        <li className="right-li">
-                            <img className="right-photo" onClick={this.moveLeft} src={images[idx - 1].url} ></img>
+                        <li className="right-li" onClick={this.moveLeft}>
+                            {/* <img className="right-photo" onClick={this.moveLeft} src={images[idx - 1].url} ></img> */}
+                            <Photo key={images[idx - 1].id}
+                                url={images[idx - 1].url} current=''
+                                business_url={images[idx - 1].business_url}
+                                info={this.props.businesses[images[idx - 1].businessId]}
+                                center={false}
+                            />
                         </li>
                     ) : ( <li className="white-rect"></li> )}
                     <li className="center-li">
@@ -93,14 +99,19 @@ class Carousel extends React.Component {
                         <Photo key={images[idx].id}
                             url={images[idx].url} current=''
                             business_url={images[idx].business_url}
-                            visitBusiness={this.visitBusiness}
-                            activateImage={this.activateImage}
                             info={this.props.businesses[images[idx].businessId]}
+                            center={true}
                         />
                     </li>
                     { images[idx + 1] ? (
-                        <li className="left-li">
-                            <img className="left-photo" onClick={this.moveRight} src={images[idx + 1].url} ></img>
+                        <li className="left-li" onClick={this.moveRight}>
+                            {/* <img className="left-photo" onClick={this.moveRight} src={images[idx + 1].url} ></img> */}
+                            <Photo key={images[idx + 1].id}
+                                url={images[idx + 1].url} current=''
+                                business_url={images[idx + 1].business_url}
+                                info={this.props.businesses[images[idx + 1].businessId]}
+                                center={false}
+                            />
                         </li>
                     ) : ( <li className="white-rect"></li> )}
                 </ul>
