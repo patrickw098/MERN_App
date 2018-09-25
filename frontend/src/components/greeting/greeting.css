@@ -18,7 +18,7 @@
 }
 
 .greeting-buttons-button {
-    background-color: red;
+    background-color: #d32323;
     height: 100%;
     width: 100%;
     text-align: center;
@@ -39,6 +39,9 @@ a {
     display: flex;;
     flex-direction: column;
     justify-content: center;
+    font-family: 'Shadows Into Light', cursive;
+    font-weight: 400;
+    font-size: 35px;
 }
 
 .search-box-div {
