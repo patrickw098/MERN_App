@@ -1,13 +1,15 @@
 .photo-container{
-    border: 5px solid red;
-    margin-left: 5px;
-    margin-right: 5px;
+    /* border: 5px solid red; */
+    /* margin-left: 5px;
+    margin-right: 5px; */
     border-radius: 5px;
 
-    width: 33%;
+    /* width: 33%; */
+    width:100%;
 
     height: 100%;  
-    opacity: .6;
+    /* opacity: .6; */
+    opacity: 1;
     -webkit-transition: opacity 1s ease-in;
     -moz-transition: opacity 1s ease-in;
     transition: opacity 1s ease-in;
@@ -15,13 +17,15 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    position: relative;
 }
 
 .photo{
     /* object-fit: cover; */
     width: 100%;
-    height: 85%;
-    border-radius: 2px;
+    /* height: 85%; */
+    /* border-radius: 2px; */
     box-shadow: 1px 1px 10px rgba(154, 152, 152, 0.5);
 }
 
