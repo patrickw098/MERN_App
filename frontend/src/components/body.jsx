@@ -16,7 +16,7 @@ class Body extends React.Component {
                 </div>
                 {currentUser ? (
                     <SearchBox />
-                ) : <h1 className="search-box-div">Decide, what you want to eat by the way it looks.</h1>}
+                ) : <div className="search-box-div"><h2 className="slogan">Feast Your Eyes</h2></div>}
             </main>
         )
     }

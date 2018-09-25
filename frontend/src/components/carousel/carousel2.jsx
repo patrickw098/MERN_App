@@ -23,7 +23,7 @@ class Carousel extends React.Component {
     }
 
     componentWillReceiveProps(newProps) {
-        if ( newProps.currentUser.id ) {
+        if ( newProps.images.length - 1 < this.state.idx ) {
             this.setState({
                 idx: 0,
             })
