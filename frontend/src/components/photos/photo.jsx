@@ -13,8 +13,9 @@ const Photo = (props) => {
     const displayIcons = () => {
         if(center){
             let icons = document.querySelector('.icons-container');
-            icons.style.display = 'flex';
-            icons.style.transition = 'all 1s ease';
+            icons.style.visibility = 'visible';
+            icons.style.opacity = 1;
+            icons.style.transition = 'visibility 0s, opacity 1s linear;';
         }else{
             return
         }
@@ -23,8 +24,8 @@ const Photo = (props) => {
     const hideIcons = () => {
         if(center){
             let icons = document.querySelector('.icons-container');
-            icons.style.display = 'none';
-            icons.style.transition = 'all 1s ease';
+            icons.style.visibility = 'hidden'; 
+            icons.style.opacity = 0;
         }else{
             return
         }
@@ -36,7 +37,7 @@ const Photo = (props) => {
         <CSSTransition
             in={true}
             appear={true}
-            timeout={1000}
+            timeout={2000}
             classNames="fade"
         >
             <div key = 'pic' className={'photo-container'} onClick={activateImage}

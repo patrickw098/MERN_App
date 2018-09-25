@@ -61,6 +61,12 @@ button {
 .center-li {
     width: 50%;
     height: 85%;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -o-transform: scale(1);
+    transition-duration: .7s;
+    -webkit-transition-duration: .7s;
+    -o-transition-duration: .7s;
 }
 .center-photo {
     width: 800px;
@@ -71,10 +77,20 @@ button {
     /* border: 10px groove rgba(0, 0, 0); */
 }
 
+.center-li:hover{
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transition-duration: .7s;
+    -webkit-transition-duration: .7s;
+    -o-transition-duration: .7s;
+    z-index: 9999999;
+}
+
 .right-li, .left-li, .white-rect {
     width: 15%;
     height: 22%;
-    margin: 10px;
+    margin: 20px;
     opacity: .6;
 }
 .white-rect {
