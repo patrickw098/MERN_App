@@ -32,6 +32,8 @@
     width: 100%;
     z-index: 0;
     box-shadow: 10px 10px 10px gray;
+    border: 5px solid red;
+    border-radius: 5px;
 }
 
 .angle {
@@ -99,8 +101,7 @@ button {
 }
 
 li {
-    border: 5px solid red;
-    border-radius: 5px;
+
 }
 
 img{

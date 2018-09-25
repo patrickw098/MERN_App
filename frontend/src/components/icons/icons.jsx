@@ -43,11 +43,11 @@ const PhotoIcons = (props) => {
 
    return (
        <div className='icons-container'>
-           <div className='yelp' onClick = {() => window.location = url}>
-               <i className="b-icon fab fa-yelp"></i>
-           </div>
            <div className='price'>
             {priceIcon}
+           </div>
+           <div className='yelp' onClick={() => window.location = url}>
+               <i className="b-icon fab fa-yelp"></i>
            </div>
            <div className='open'>
             {openNow}
