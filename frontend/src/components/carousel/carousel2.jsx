@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import { getMoreImages } from '../../utils/image_utils';
 
+import Photo from '../photos/photo';
+
 import './carousel.css';
 
 class Carousel extends React.Component {
@@ -82,15 +84,22 @@ class Carousel extends React.Component {
             <div className="carousel">
                 <ul className="carousel-wrapper">
                     { images[idx - 1] ? ( 
-                        <li>
+                        <li className="right-li">
                             <img className="right-photo" onClick={this.moveLeft} src={images[idx - 1].url} ></img>
                         </li>
                     ) : ( <li className="white-rect"></li> )}
-                    <li>
-                        <img className="center-photo" src={images[idx].url} ></img>
+                    <li className="center-li">
+                        {/* <img className="center-photo" src={images[idx].url} ></img> */}
+                        <Photo key={images[idx].id}
+                            url={images[idx].url} current=''
+                            business_url={images[idx].business_url}
+                            visitBusiness={this.visitBusiness}
+                            activateImage={this.activateImage}
+                            info={this.props.businesses[images[idx].businessId]}
+                        />
                     </li>
                     { images[idx + 1] ? (
-                        <li>
+                        <li className="left-li">
                             <img className="left-photo" onClick={this.moveRight} src={images[idx + 1].url} ></img>
                         </li>
                     ) : ( <li className="white-rect"></li> )}

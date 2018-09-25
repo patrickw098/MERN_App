@@ -1,6 +1,29 @@
 .icons-container{
-    display: flex;
+    /* display: flex; */
+    display: none;
     flex-direction: row;
     justify-content: space-around;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+
+    position: absolute;
+    width: 100%;
+    bottom: 5px;;
+    /* transform: translateY(90%); */
+}
+
+.b-icon{
+    font-size: 30px;
+    text-shadow: 1px 2px 3px rgba(154, 152, 152, 0.5);
+    color: white;
+    transition-duration: 1s;
+    /* text-shadow: distanceX distanceY size color; */
+}
+
+.b-icon:hover{
+    transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+    -o-transform: scale(1.5);
+    transition-duration: .7s;
+    -webkit-transition-duration: .7s;
+    -o-transition-duration: .7s;
 }

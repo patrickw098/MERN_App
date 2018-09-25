@@ -3,27 +3,28 @@ import React from 'react';
 import './icons.css';
 
 const PhotoIcons = (props) => {
-    const{ info} = props;
-    const [url, price, is_closed] = [info.url, info.price, info.is_closed];
-    console.log('price',price);
-    const dollar = <i className="fas fa-dollar-sign"></i>
-    let openNow, priceIcon;
+    const{ info } = props;
+    let url, price, is_open, openNow, priceIcon;
+    // console.log(info)
+    if(info && Object.keys(info).length !== 0){
+        [url, price, is_open] = [info.url, info.price, info.hours[0].is_open_now];
+    }
+
     let prices = [];
     
     if(price){
-
-        if (is_closed) {
+        if (!is_open) {
             openNow = <div className='open-icon'>
-                <i className="fas fa-door-closed"></i>
+                <i className="b-icon fas fa-door-closed"></i>
             </div>
         } else {
             openNow = <div className='open-icon'>
-                <i className="fas fa-door-open"></i>
+                <i className="b-icon fas fa-door-open"></i>
             </div>
         }
 
         for (let i = 0; i < price.length; i++) {
-            prices.push(<i key={i} className="fas fa-dollar-sign"></i>)
+            prices.push(<i key={i} className="b-icon fas fa-dollar-sign"></i>)
         }
 
         priceIcon = <div className='price-icon'>
@@ -31,11 +32,11 @@ const PhotoIcons = (props) => {
         </div>
     }else{
         priceIcon = <div className='price-icon'>
-            {dollar}
+            <i className="b-icon fas fa-dollar-sign"></i>
         </div> 
 
         openNow = <div className='open-icon'>
-            <i className="fas fa-door-open"></i>
+            <i className="b-icon fas fa-door-open"></i>
         </div>
     }
 
@@ -43,7 +44,7 @@ const PhotoIcons = (props) => {
    return (
        <div className='icons-container'>
            <div className='yelp' onClick = {() => window.location = url}>
-             <i className="fab fa-yelp"></i>
+               <i className="b-icon fab fa-yelp"></i>
            </div>
            <div className='price'>
             {priceIcon}
