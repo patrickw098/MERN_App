@@ -16,7 +16,8 @@ class Carousel extends React.Component {
             images: this.props.images,
             currentIdx: 0,
             currentImages: [0, 1, 2],
-            noImg: 'https://cdn.dribbble.com/users/55871/screenshots/2158022/no_photo_1x.jpg'
+            noImg: 'https://sourcemaking.com/files/sm/images/spagett.jpg',
+            // noImg: 'https://cdn.dribbble.com/users/55871/screenshots/2158022/no_photo_1x.jpg'
         }
 
         this.nextPhoto = this.nextPhoto.bind(this);
@@ -54,7 +55,7 @@ class Carousel extends React.Component {
         //add active class to clicked images
         let currentImg = e.currentTarget;
         currentImg.classList.add('active-photo');
-        
+
         const imgSrc = currentImg.firstElementChild.src;
     }
 
@@ -82,7 +83,7 @@ class Carousel extends React.Component {
             newImages = currentImages.map((el) => el - 3);
         }
 
-        //take care of the images if there are not a multiple of 3 
+        //take care of the images if there are not a multiple of 3
         const len = images.length;
         const copy = images.slice(0);
         for( let i = 0; i < newImages.length; i++ ){
@@ -153,7 +154,7 @@ class Carousel extends React.Component {
         else if ( e.key === 'ArrowLeft' ) {
             e.preventDefault();
             this.prevPhoto(e);
-        } 
+        }
     }
 
     bufferImages() {
@@ -180,15 +181,15 @@ class Carousel extends React.Component {
 
             return (
                 <div className='carousel' tabIndex='0' onKeyDown = {this.detectKeyDown}>
-                    {/* <button className='button left-button' 
+                    {/* <button className='button left-button'
                         onClick={(e) => this.handleArrowClick(-3,e)}
-                        >    
+                        >
                         <i className="fas angle fa-angle-double-left"></i>
                         </button> */}
                     <div className = 'wrapper'>
                         <div className="carousel-wrapper">
                             {currentImages.map(index => {
-                                return <Photo key={images[index].id} 
+                                return <Photo key={images[index].id}
                                 url={images[index].url} current = {index === currentIdx ? 'active-photo' : ''}
                                 business_url={images[index].business_url}
                                 visitBusiness={this.visitBusiness}
@@ -198,7 +199,7 @@ class Carousel extends React.Component {
                             })}
                         </div>
                         <div className='selectors'>
-                            <button className = 'button left-select' onClick ={this.prevPhoto}> 
+                            <button className = 'button left-select' onClick ={this.prevPhoto}>
                                 <i className="fas angle fa-angle-left"></i>
                             </button>
                             <button className = 'button right-select' onClick = {this.nextPhoto}>
@@ -206,7 +207,7 @@ class Carousel extends React.Component {
                             </button>
                         </div>
                     </div>
-                    {/* <button className='button right-button' 
+                    {/* <button className='button right-button'
                         onClick={(e) => this.handleArrowClick(3,e)}
                         >
                         <i className="fas angle fa-angle-double-right"></i>
