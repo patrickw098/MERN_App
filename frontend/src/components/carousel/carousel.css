@@ -76,6 +76,7 @@ button {
     border-radius: 10px;
     box-shadow: 20px 20px 20px gray;
     z-index: 999;
+    box-sizing: border-box;
     /* border: 10px groove rgba(0, 0, 0); */
 }
 
